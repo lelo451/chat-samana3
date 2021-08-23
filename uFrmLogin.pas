@@ -30,8 +30,8 @@ uses uDataModule01;
 
 procedure TFrmLogin.BtEntrarClick(Sender: TObject);
 begin
-
-  if (EdEmail.Text) <> '' then
+                  
+  if (EdEmail.Text) <> '' then  //VALIDA SE O USUARIO TEM CONTA CADASTRADA NO BANCO
   begin
     DataModule01.QueryUsuario.SQL.Clear;
     DataModule01.QueryUsuario.SQL.Add('SELECT EmailUsu FROM chatusuario');
@@ -46,7 +46,7 @@ begin
   end
   else
   begin
-    MessageDlg('Usuario inv�lido.', MtError, [MbOK], 0);
+    MessageDlg('Usuario inválido.', MtError, [MbOK], 0);
   end;
 
   if (EdEmail.Text = '') AND (EdApelido.Text = '') then
@@ -55,7 +55,7 @@ begin
   end;
 
    with DataModule01.TableUsuario do
-  begin
+  begin //AQUI É ONDE O UPDATE ONLINE = 0 PARA ONLINE 1 OCORRE
 
     Close;
     SQL.Clear;
