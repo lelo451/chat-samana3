@@ -2,7 +2,7 @@ object FrmLogin: TFrmLogin
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'FrmLogin'
+  Caption = 'Login'
   ClientHeight = 243
   ClientWidth = 332
   Color = clWhite
@@ -18,9 +18,9 @@ object FrmLogin: TFrmLogin
   object Label1: TLabel
     Left = 128
     Top = 32
-    Width = 66
+    Width = 53
     Height = 23
-    Caption = 'Acesso'
+    Caption = 'Login'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -55,6 +55,7 @@ object FrmLogin: TFrmLogin
     ParentFont = False
     TabOrder = 1
     TextHint = 'apelido'
+    OnKeyPress = EdApelidoKeyPress
   end
   object BtEntrar: TButton
     Left = 80

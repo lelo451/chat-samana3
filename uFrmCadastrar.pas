@@ -13,6 +13,7 @@ type
     EdNome: TEdit;
     BtCadastrar: TButton;
     procedure BtCadastrarClick(Sender: TObject);
+    procedure EdNomeKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -26,28 +27,39 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule01;
+uses uDm;
 
 procedure TFrmCadastrar.BtCadastrarClick(Sender: TObject);
 begin
 
   if (EdEmail.Text <> '') AND (EdNome.Text <> '') then
   begin
-    DataModule01.TableUsuario.Open;
-    DataModule01.TableUsuario.Insert;
-    DataModule01.TableUsuarioEmailUsu.Value := EdEmail.Text;
-    DataModule01.TableUsuarioNomeUSu.Value := EdNome.Text;
-    DataModule01.TableUsuario.Post;
-    DataModule01.TableUsuario.Close;
-
+    with Dm do
+    begin
+      TableUsuario.Open;
+      TableUsuario.Insert;
+      TableUsuarioEmailUsu.Value := EdEmail.Text;
+      TableUsuarioNomeUSu.Value := EdNome.Text;
+      TableUsuario.Post;
+      TableUsuario.Close;
+    end;
     ShowMessage('Conta Cadastrada.');
     EdEmail.Clear; EdNome.Clear;
+    FrmCadastrar.Close;
   end
   else
   begin
     MessageDlg('Campos Vazios.', MtError, [MbOK], 0);
   end;
 
+end;
+
+procedure TFrmCadastrar.EdNomeKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    BtCadastrar.Click;
+  end;
 end;
 
 end.

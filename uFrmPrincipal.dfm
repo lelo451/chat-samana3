@@ -2,7 +2,7 @@ object FrmPrincipal: TFrmPrincipal
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Home'
+  Caption = 'P'#225'gina Inicial'
   ClientHeight = 258
   ClientWidth = 467
   Color = 15790320

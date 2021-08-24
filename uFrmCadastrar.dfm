@@ -2,7 +2,7 @@ object FrmCadastrar: TFrmCadastrar
   Left = 0
   Top = 0
   BorderStyle = bsDialog
-  Caption = 'Login'
+  Caption = 'Registrar'
   ClientHeight = 243
   ClientWidth = 332
   Color = clWhite
@@ -18,9 +18,9 @@ object FrmCadastrar: TFrmCadastrar
   object Label1: TLabel
     Left = 128
     Top = 32
-    Width = 66
+    Width = 88
     Height = 23
-    Caption = 'Acesso'
+    Caption = 'Registrar'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -19
@@ -55,6 +55,7 @@ object FrmCadastrar: TFrmCadastrar
     ParentFont = False
     TabOrder = 1
     TextHint = 'nome'
+    OnKeyPress = EdNomeKeyPress
   end
   object BtCadastrar: TButton
     Left = 80

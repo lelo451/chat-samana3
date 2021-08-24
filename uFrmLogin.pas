@@ -1,10 +1,10 @@
-unit uFrmLogin;
+﻿unit uFrmLogin;
 
 interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uFrmChat;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uFrmGroupChat, uFrmChoice, uFrmSingleChat;
 
 type
   TFrmLogin = class(TForm)
@@ -13,6 +13,7 @@ type
     EdApelido: TEdit;
     BtEntrar: TButton;
     procedure BtEntrarClick(Sender: TObject);
+    procedure EdApelidoKeyPress(Sender: TObject; var Key: Char);
   private
     { Private declarations }
   public
@@ -26,22 +27,32 @@ implementation
 
 {$R *.dfm}
 
-uses uDataModule01;
+uses uDm;
 
 procedure TFrmLogin.BtEntrarClick(Sender: TObject);
 begin
                   
   if (EdEmail.Text) <> '' then  //VALIDA SE O USUARIO TEM CONTA CADASTRADA NO BANCO
   begin
-    DataModule01.QueryUsuario.SQL.Clear;
-    DataModule01.QueryUsuario.SQL.Add('SELECT EmailUsu FROM chatusuario');
-    DataModule01.QueryUsuario.SQL.Add('WHERE EmailUsu = '+QuotedStr(Trim(EdEmail.Text)) );
-    DataModule01.QueryUsuario.Open;
-    if not DataModule01.QueryUsuario.IsEmpty then
+    with Dm do
+    begin
+      QueryUsuario.SQL.Clear;
+      QueryUsuario.SQL.Add('SELECT EmailUsu FROM chatusuario');
+      QueryUsuario.SQL.Add('WHERE EmailUsu = '+QuotedStr(Trim(EdEmail.Text)) );
+      QueryUsuario.Open;
+    end;
+
+    if not Dm.QueryUsuario.IsEmpty then
     begin
       FrmChat.Apelido := EdApelido.Text;
       FrmChat.Email := EdEmail.Text;
-      FrmChat.Show;
+
+      FrmSingleChat.Apelido := EdApelido.Text;
+      FrmSingleChat.Email := EdEmail.Text;
+
+      //FrmChat.Show;
+      FrmChoice.Show;
+      FrmLogin.Close;
     end
   end
   else
@@ -54,17 +65,23 @@ begin
     MessageDlg('Campos vazios.', MtError, [MbOK], 0);
   end;
 
-   with DataModule01.TableUsuario do
+  with Dm.TableUsuario do
   begin //AQUI É ONDE O UPDATE ONLINE = 0 PARA ONLINE 1 OCORRE
-
     Close;
     SQL.Clear;
     SQL.Add('UPDATE chatusuario SET Online = 1 WHERE EmailUsu =:pnom ');
     ParamByName('pnom').AsString := EdEmail.Text;
     ExecSQL;
-
   end;
 
+end;
+
+procedure TFrmLogin.EdApelidoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+  begin
+    BtEntrar.Click;
+  end;
 end;
 
 end.
