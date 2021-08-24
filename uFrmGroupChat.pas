@@ -128,7 +128,7 @@ begin
   if Apelido <> '' then
     LbApelido.Caption := Apelido
   else
-    LbApelido.Caption := 'Anõnimo';
+    LbApelido.Caption := 'Anônimo';
 
   LbStatus.Caption := 'ONLINE';
 

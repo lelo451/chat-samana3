@@ -151,8 +151,6 @@ object FrmSingleChat: TFrmSingleChat
       Align = alClient
       ReadOnly = True
       TabOrder = 0
-      ExplicitLeft = 20
-      ExplicitWidth = 585
     end
   end
   object Panel4: TPanel
@@ -162,7 +160,6 @@ object FrmSingleChat: TFrmSingleChat
     Height = 296
     Align = alLeft
     TabOrder = 3
-    ExplicitLeft = 547
   end
   object Panel3: TPanel
     Left = 547
@@ -171,8 +168,5 @@ object FrmSingleChat: TFrmSingleChat
     Height = 296
     Align = alRight
     TabOrder = 4
-    ExplicitLeft = -1
-    ExplicitTop = 1
-    ExplicitHeight = 294
   end
 end
