@@ -54,11 +54,15 @@ begin
 
   with DataModule01.TableUsuario do
   begin
+    try
     Close;
     SQL.Clear;
-    SQl.Add('SELECT NomeUsu FROM chatusuario WHERE Online = 1 AND NomeUsu =:pnom');
+    SQl.Add('SELECT NomeUsu FROM chatusuarioa WHERE Online = 1 AND NomeUsu  =:pnom');
     ParamByName('pnom').AsString := EdPesquisar.Text;
     ExecSQL;
+    except
+      ShowMessage('Usuario OFFLINE.');
+    end;
 
   end;
 
@@ -92,7 +96,7 @@ begin
   if Apelido <> '' then
     LbApelido.Caption := Apelido
   else
-  LbApelido.Caption := 'Anınimo';
+  LbApelido.Caption := 'An√µnimo';
 
 
 
