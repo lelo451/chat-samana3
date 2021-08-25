@@ -1,0 +1,147 @@
+object FrmSingleChat: TFrmSingleChat
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Single Chat'
+  ClientHeight = 416
+  ClientWidth = 587
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 587
+    Height = 80
+    Align = alTop
+    Caption = 'CHAT'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    object LbApelido: TLabel
+      Left = 10
+      Top = 32
+      Width = 65
+      Height = 19
+      Caption = 'An'#244'nimo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbStatus: TLabel
+      Left = 503
+      Top = 32
+      Width = 60
+      Height = 19
+      Caption = 'STATUS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 376
+    Width = 587
+    Height = 40
+    Align = alBottom
+    TabOrder = 1
+    ExplicitTop = 336
+    object BtnChatClear: TButton
+      Left = 521
+      Top = 5
+      Width = 58
+      Height = 31
+      Caption = 'LIMPAR'
+      TabOrder = 0
+    end
+    object BtnChatOk: TButton
+      Left = 457
+      Top = 5
+      Width = 58
+      Height = 31
+      Caption = 'ENVIAR'
+      TabOrder = 1
+    end
+    object EdTexto: TEdit
+      Left = 24
+      Top = 5
+      Width = 427
+      Height = 31
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      TextHint = 'digite aqui...'
+    end
+  end
+  object Panel3: TPanel
+    Left = 0
+    Top = 80
+    Width = 40
+    Height = 296
+    Align = alLeft
+    Caption = 'Panel3'
+    TabOrder = 2
+    Visible = False
+    ExplicitHeight = 256
+  end
+  object Panel4: TPanel
+    Left = 547
+    Top = 80
+    Width = 40
+    Height = 296
+    Align = alRight
+    Caption = 'Panel3'
+    TabOrder = 3
+    Visible = False
+    ExplicitLeft = 402
+    ExplicitHeight = 256
+  end
+  object Panel5: TPanel
+    Left = 40
+    Top = 80
+    Width = 507
+    Height = 296
+    Align = alClient
+    TabOrder = 4
+    ExplicitLeft = 336
+    ExplicitTop = 176
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object MChat: TMemo
+      Left = 1
+      Top = 1
+      Width = 505
+      Height = 294
+      Align = alClient
+      Lines.Strings = (
+        'MChat')
+      TabOrder = 0
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 185
+      ExplicitHeight = 89
+    end
+  end
+end

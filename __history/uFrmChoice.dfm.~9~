@@ -1,0 +1,95 @@
+object FrmChoice: TFrmChoice
+  Left = 0
+  Top = 0
+  Caption = 'Escolha'
+  ClientHeight = 243
+  ClientWidth = 332
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label1: TLabel
+    Left = 107
+    Top = 24
+    Width = 119
+    Height = 19
+    Caption = 'TIPO DE CHAT'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Button1: TButton
+    Left = 102
+    Top = 64
+    Width = 129
+    Height = 41
+    Caption = 'TODOS'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 0
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 102
+    Top = 191
+    Width = 129
+    Height = 41
+    Caption = 'SELECIONAR'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    OnClick = Button2Click
+  end
+  object DBGListUser: TDBGrid
+    Left = 102
+    Top = 111
+    Width = 129
+    Height = 74
+    DataSource = DSUser
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object DBListBox1: TDBListBox
+    Left = 8
+    Top = 64
+    Width = 121
+    Height = 97
+    DataSource = FrmChat.DataSourceUsuarioOnline
+    ItemHeight = 13
+    TabOrder = 3
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = Timer1Timer
+    Left = 264
+    Top = 32
+  end
+  object DSUser: TDataSource
+    DataSet = Dm.QueryUsuOnline
+    Left = 280
+    Top = 96
+  end
+end

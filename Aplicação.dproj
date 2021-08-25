@@ -115,8 +115,16 @@
             <Form>FrmLogin</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="uFrmChat.pas">
+        <DCCReference Include="uFrmGroupChat.pas">
             <Form>FrmChat</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uFrmSingleChat.pas">
+            <Form>FrmSingleChat</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="uFrmChoice.pas">
+            <Form>FrmChoice</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Release">

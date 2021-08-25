@@ -6,7 +6,9 @@ uses
   uFrmCadastrar in 'uFrmCadastrar.pas' {FrmCadastrar},
   uDm in 'uDm.pas' {Dm: TDataModule},
   uFrmLogin in 'uFrmLogin.pas' {FrmLogin},
-  uFrmChat in 'uFrmChat.pas' {FrmChat};
+  uFrmGroupChat in 'uFrmGroupChat.pas' {FrmChat},
+  uFrmSingleChat in 'uFrmSingleChat.pas' {FrmSingleChat},
+  uFrmChoice in 'uFrmChoice.pas' {FrmChoice};
 
 {$R *.res}
 
@@ -18,5 +20,7 @@ begin
   Application.CreateForm(TDm, Dm);
   Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TFrmChat, FrmChat);
+  Application.CreateForm(TFrmSingleChat, FrmSingleChat);
+  Application.CreateForm(TFrmChoice, FrmChoice);
   Application.Run;
 end.
