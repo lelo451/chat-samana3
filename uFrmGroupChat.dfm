@@ -98,7 +98,6 @@ object FrmChat: TFrmChat
           Expanded = False
           FieldName = 'EMAILUSU'
           Title.Caption = 'Email'
-          Width = -1
           Visible = False
         end>
     end

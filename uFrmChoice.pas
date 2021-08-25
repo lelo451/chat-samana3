@@ -35,6 +35,7 @@ implementation
 
 procedure TFrmChoice.Button1Click(Sender: TObject);
 begin
+  FrmChat.UpdateMemo;
   FrmChat.Show;
   FrmChoice.Close;
 end;
@@ -52,6 +53,7 @@ begin
     begin
       FrmSingleChat.EmailRecipiente := EmailDestinatario;
       FrmSingleChat.ApelidoRecipiente := ApelidoRecipiente;
+      FrmSingleChat.UpdateMemo;
       FrmSingleChat.Show;
       FrmChoice.Close;
     end;

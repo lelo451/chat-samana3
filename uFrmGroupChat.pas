@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids;
+  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param;
 
 type
   TFrmChat = class(TForm)
@@ -33,9 +33,9 @@ type
     { Private declarations }
   public
     { Public declarations }
-
     property Apelido : String read FApelido write FApelido;
     property Email : String read FEmail write FEmail;
+    procedure UpdateMemo();
   end;
 
 var
@@ -56,16 +56,15 @@ begin
   From := FEmail;
   if EdTexto.Text <> '' then
   begin
-    with Dm.Query do
+    with Dm do
     begin
-      SQL.Clear;
-      SQL.Text := 'INSERT INTO mensagem ' +
-      '(TEXTO, REMETENTE) ' +
-      'VALUES ' +
-      '(:msg, :from)';
-      Params[0].AsString := Mensagem;
-      Params[1].AsString := From;
-      ExecSQL;
+      TableMensagem.Open;
+      TableMensagem.Insert;
+      TableMensagemTEXTO.Value := Mensagem;
+      TableMensagemREMETENTE.Value := From;
+      TableMensagemDESTINATARIO.Value := 'ALL';
+      TableMensagem.Post;
+      TableMensagem.Close;
     end;
     MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
     EdTexto.Text := '';
@@ -101,28 +100,8 @@ begin
 end;
 
 procedure TFrmChat.FormShow(Sender: TObject);
-var
-  msg: String;
-  i : integer;
 begin
-(*  with Dm.Query do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('SELECT C.NOMEUSU as apelido, M.TEXTO as msg FROM CHATUSUARIO C, MENSAGEM M WHERE M.REMETENTE = C.EMAILUSU');
-  end;
-  with Dm do
-  begin
-    Query.Open;
-    Query.First;
-    I := 0;
-    while eof do
-      begin
-        MChatConteudo.Lines.Add(Query.Fields[0].Text + ': ' + Query.Fields[1].Text);
-      Next;
-      end;
-  end;
-*)
+  UpdateMemo;
   Timer01.Enabled := True;
 
   if Apelido <> '' then
@@ -137,6 +116,25 @@ end;
 procedure TFrmChat.Timer01Timer(Sender: TObject);
 begin
   Dm.QueryUsuOnline.Open('SELECT NomeUsu FROM chatusuario WHERE Online = 1;');
+  UpdateMemo;
+end;
+
+procedure TFrmChat.UpdateMemo();
+begin
+  FrmChat.MChatConteudo.Clear;
+  with Dm.Query do
+  begin
+    Open;
+    try
+      while not EoF do
+      begin
+        FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+        Next;
+      end;
+    finally
+      Close;
+    end;
+  end;
 end;
 
 end.

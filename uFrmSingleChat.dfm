@@ -137,36 +137,32 @@ object FrmSingleChat: TFrmSingleChat
     end
   end
   object Panel5: TPanel
-    Left = 40
+    Left = 0
     Top = 80
-    Width = 507
+    Width = 587
     Height = 296
     Align = alClient
     TabOrder = 2
     object MChatConteudo: TMemo
       Left = 1
       Top = 1
-      Width = 505
+      Width = 585
       Height = 294
       Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
       ReadOnly = True
       TabOrder = 0
     end
   end
-  object Panel4: TPanel
-    Left = 0
-    Top = 80
-    Width = 40
-    Height = 296
-    Align = alLeft
-    TabOrder = 3
-  end
-  object Panel3: TPanel
-    Left = 547
-    Top = 80
-    Width = 40
-    Height = 296
-    Align = alRight
-    TabOrder = 4
+  object Timer1: TTimer
+    Interval = 2000
+    OnTimer = Timer1Timer
+    Left = 424
+    Top = 16
   end
 end

@@ -62,7 +62,83 @@ object Dm: TDm
   end
   object Query: TFDQuery
     Connection = FDConnection
+    SQL.Strings = (
+      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg'
+      'FROM CHATUSUARIO C, MENSAGEM M'
+      'WHERE'
+      'M.REMETENTE = C.EMAILUSU'
+      'AND'
+      'M.DESTINATARIO = :dest'
+      'ORDER BY M.IDMENSAGEM')
     Left = 312
     Top = 160
+    ParamData = <
+      item
+        Name = 'DEST'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'ALL'
+      end>
+  end
+  object TableMensagem: TFDTable
+    Active = True
+    IndexFieldNames = 'IDMENSAGEM'
+    Connection = FDConnection
+    TableName = 'MENSAGEM'
+    Left = 104
+    Top = 192
+    object TableMensagemTEXTO: TStringField
+      FieldName = 'TEXTO'
+      Origin = 'TEXTO'
+      Required = True
+      Size = 500
+    end
+    object TableMensagemREMETENTE: TStringField
+      FieldName = 'REMETENTE'
+      Origin = 'REMETENTE'
+      Size = 100
+    end
+    object TableMensagemDESTINATARIO: TStringField
+      FieldName = 'DESTINATARIO'
+      Origin = 'DESTINATARIO'
+      Size = 100
+    end
+  end
+  object QueryIndividual: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg'
+      'FROM CHATUSUARIO C, MENSAGEM M'
+      'WHERE'
+      'M.REMETENTE = C.EMAILUSU'
+      'AND'
+      'M.DESTINATARIO = :dest'
+      'AND'
+      'M.REMETENTE = :rem'
+      'UNION'
+      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg'
+      'FROM CHATUSUARIO C, MENSAGEM M'
+      'WHERE'
+      'M.REMETENTE = C.EMAILUSU'
+      'AND'
+      'M.DESTINATARIO = :rem'
+      'AND'
+      'M.REMETENTE = :dest')
+    Left = 376
+    Top = 168
+    ParamData = <
+      item
+        Name = 'DEST'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'weslley@hotmail.com'
+      end
+      item
+        Name = 'REM'
+        DataType = ftString
+        ParamType = ptInput
+        Size = 100
+        Value = 'felipefazzano@hotmail.com'
+      end>
   end
 end

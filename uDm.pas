@@ -21,6 +21,11 @@ type
     QueryUsuOnline: TFDQuery;
     FDPhysFBDriverLink: TFDPhysFBDriverLink;
     Query: TFDQuery;
+    TableMensagem: TFDTable;
+    TableMensagemTEXTO: TStringField;
+    TableMensagemREMETENTE: TStringField;
+    TableMensagemDESTINATARIO: TStringField;
+    QueryIndividual: TFDQuery;
   private
     { Private declarations }
   public
