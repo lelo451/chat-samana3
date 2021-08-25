@@ -1,0 +1,146 @@
+unit uFrmGroupChat;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
+  Vcl.Grids, Vcl.DBGrids;
+
+type
+  TFrmChat = class(TForm)
+    PanelTop: TPanel;
+    LbApelido: TLabel;
+    LbStatus: TLabel;
+    Panel1: TPanel;
+    DBUserOnline: TDBGrid;
+    DataSourceUsuarioOnline: TDataSource;
+    PanelChat: TPanel;
+    MChatConteudo: TMemo;
+    EdTexto: TEdit;
+    BtnChatOk: TButton;
+    BtnChatClear: TButton;
+    Timer01: TTimer;
+    procedure FormShow(Sender: TObject);
+    procedure Timer01Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure BtnChatClearClick(Sender: TObject);
+    procedure BtnChatOkClick(Sender: TObject);
+    procedure EdTextoKeyPress(Sender: TObject; var Key: Char);
+  private
+    FApelido: String;
+    FEmail: String;
+    procedure UpdateMemo();
+    { Private declarations }
+  public
+    { Public declarations }
+    property Apelido : String read FApelido write FApelido;
+    property Email : String read FEmail write FEmail;
+  end;
+
+var
+  FrmChat: TFrmChat;
+
+implementation
+
+{$R *.dfm}
+
+uses uDm;
+
+
+procedure TFrmChat.BtnChatOkClick(Sender: TObject);
+var
+  Mensagem, From: String;
+begin
+  Mensagem := EdTexto.Text;
+  From := FEmail;
+  if EdTexto.Text <> '' then
+  begin
+    with Dm.Query do
+    begin
+      Close;
+      SQL.Clear;
+      SQL.Text := 'INSERT INTO mensagem ' +
+      '(TEXTO, REMETENTE, DESTINATARIO) ' +
+      'VALUES ' +
+      '(:msg, :from, :dest)';
+      Params[0].AsString := Mensagem;
+      Params[1].AsString := From;
+      Params[2].AsString := 'ALL';
+      ExecSQL;
+      Close;
+    end;
+    MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
+    EdTexto.Text := '';
+    EdTexto.SetFocus;
+  end;
+end;
+
+procedure TFrmChat.EdTextoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    begin
+      BtnChatOk.Click;
+    end;
+end;
+
+procedure TFrmChat.BtnChatClearClick(Sender: TObject);
+begin
+  EdTexto.Text := '';
+end;
+
+procedure TFrmChat.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  with Dm.TableUsuario do
+  begin
+    Close;
+    SQL.Clear;
+    SQL.Add('UPDATE chatusuario SET Online = 0 WHERE EmailUsu =:pnom');
+    ParamByName('pnom').AsString := Email;
+    ExecSQL;
+  end;
+
+  Timer01.Enabled := False;
+end;
+
+procedure TFrmChat.FormShow(Sender: TObject);
+var
+  msg, nick: String;
+  i, rownumber : integer;
+begin
+  UpdateMemo;
+  Timer01.Enabled := True;
+
+  if Apelido <> '' then
+    LbApelido.Caption := Apelido
+  else
+    LbApelido.Caption := 'Anônimo';
+
+  LbStatus.Caption := 'ONLINE';
+
+end;
+
+procedure TFrmChat.Timer01Timer(Sender: TObject);
+begin
+  Dm.QueryUsuOnline.Open('SELECT NomeUsu FROM chatusuario WHERE Online = 1;');
+  UpdateMemo;
+end;
+
+procedure TFrmChat.UpdateMemo();
+begin
+  with Dm.Query do
+  begin
+    Open;
+    try
+      while not EoF do
+      begin
+        FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+        Next;
+      end;
+    finally
+      Close;
+    end;
+  end;
+end;
+
+end.
