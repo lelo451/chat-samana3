@@ -4,13 +4,12 @@ object Dm: TDm
   Width = 567
   object FDConnection: TFDConnection
     Params.Strings = (
-      
-        'Database=C:\Users\Archer\Documents\Git clone\chat-samana3\ARQUIV' +
-        'O.FDB'
+      'Database=/firebird/db/SYSDBA/ARQUIVO.FDB'
       'User_Name=SYSDBA'
-      'Password=masterkey'
-      'Server=127.0.0.1'
+      'Password=MASTERKEY'
+      'Server=fbserver.com.br'
       'Port=3050'
+      'Protocol=TCPIP'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
@@ -48,7 +47,6 @@ object Dm: TDm
     end
   end
   object QueryUsuOnline: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'SELECT NomeUsu, EmailUsu FROM chatusuario WHERE Online = 1; ')
@@ -81,7 +79,6 @@ object Dm: TDm
       end>
   end
   object TableMensagem: TFDTable
-    Active = True
     IndexFieldNames = 'IDMENSAGEM'
     Connection = FDConnection
     TableName = 'MENSAGEM'
@@ -112,18 +109,10 @@ object Dm: TDm
       'WHERE'
       'M.REMETENTE = C.EMAILUSU'
       'AND'
-      'M.DESTINATARIO = :dest'
+      'M.DESTINATARIO in (:dest, :rem)'
       'AND'
-      'M.REMETENTE = :rem'
-      'UNION'
-      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg'
-      'FROM CHATUSUARIO C, MENSAGEM M'
-      'WHERE'
-      'M.REMETENTE = C.EMAILUSU'
-      'AND'
-      'M.DESTINATARIO = :rem'
-      'AND'
-      'M.REMETENTE = :dest')
+      'M.REMETENTE in (:dest, :rem)'
+      'ORDER BY M.IDMENSAGEM')
     Left = 376
     Top = 168
     ParamData = <

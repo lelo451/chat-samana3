@@ -1,12 +1,9 @@
 unit uFrmGroupChat;
-
 interface
-
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
   Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param;
-
 type
   TFrmChat = class(TForm)
     PanelTop: TPanel;
@@ -37,16 +34,11 @@ type
     property Email : String read FEmail write FEmail;
     procedure UpdateMemo();
   end;
-
 var
   FrmChat: TFrmChat;
-
 implementation
-
 {$R *.dfm}
-
 uses uDm;
-
 
 procedure TFrmChat.BtnChatOkClick(Sender: TObject);
 var
@@ -71,7 +63,6 @@ begin
     EdTexto.SetFocus;
   end;
 end;
-
 procedure TFrmChat.EdTextoKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -79,12 +70,10 @@ begin
       BtnChatOk.Click;
     end;
 end;
-
 procedure TFrmChat.BtnChatClearClick(Sender: TObject);
 begin
   EdTexto.Text := '';
 end;
-
 procedure TFrmChat.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   with Dm.TableUsuario do
@@ -95,30 +84,23 @@ begin
     ParamByName('pnom').AsString := Email;
     ExecSQL;
   end;
-
   Timer01.Enabled := False;
 end;
-
 procedure TFrmChat.FormShow(Sender: TObject);
 begin
   UpdateMemo;
   Timer01.Enabled := True;
-
   if Apelido <> '' then
     LbApelido.Caption := Apelido
   else
     LbApelido.Caption := 'Anônimo';
-
   LbStatus.Caption := 'ONLINE';
-
 end;
-
 procedure TFrmChat.Timer01Timer(Sender: TObject);
 begin
   Dm.QueryUsuOnline.Open('SELECT NomeUsu FROM chatusuario WHERE Online = 1;');
   UpdateMemo;
 end;
-
 procedure TFrmChat.UpdateMemo();
 begin
   FrmChat.MChatConteudo.Clear;
@@ -136,5 +118,4 @@ begin
     end;
   end;
 end;
-
 end.

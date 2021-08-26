@@ -20,22 +20,23 @@
     <Transaction>2021/08/22 13:39:07.000.942,C:\Users\w\Documents\DELPHI\uFrmChat.pas=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
     <Transaction>2021/08/22 13:39:07.000.942,C:\Users\w\Documents\DELPHI\uFrmChat.dfm=C:\Users\w\Documents\DELPHI\Unit1.dfm</Transaction>
     <Transaction>2021/08/23 17:33:02.000.702,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 10:58:56.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.pas</Transaction>
-    <Transaction>2021/08/24 10:58:56.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.dfm</Transaction>
-    <Transaction>2021/08/24 11:03:41.188,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 12:17:41.444,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 12:19:03.386,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm</Transaction>
-    <Transaction>2021/08/24 12:19:03.386,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 12:19:11.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.dfm</Transaction>
-    <Transaction>2021/08/24 12:19:11.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.pas</Transaction>
-    <Transaction>2021/08/24 12:23:52.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm</Transaction>
-    <Transaction>2021/08/24 12:23:52.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas</Transaction>
-    <Transaction>2021/08/24 12:24:04.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas</Transaction>
-    <Transaction>2021/08/24 12:24:04.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm</Transaction>
-    <Transaction>2021/08/24 12:40:21.179,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 12:45:44.750,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm</Transaction>
-    <Transaction>2021/08/24 12:45:44.750,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-  </Transactions>  <ProjectSortOrder AutoSort="0" SortType="0">
+    <Transaction>2021/08/24 10:58:56.000.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.pas</Transaction>
+    <Transaction>2021/08/24 10:58:56.000.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.dfm</Transaction>
+    <Transaction>2021/08/24 11:03:41.000.188,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/24 12:17:41.000.444,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/24 12:19:03.000.386,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm</Transaction>
+    <Transaction>2021/08/24 12:19:03.000.386,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/24 12:19:11.000.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.dfm</Transaction>
+    <Transaction>2021/08/24 12:19:11.000.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.pas</Transaction>
+    <Transaction>2021/08/24 12:23:52.000.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm</Transaction>
+    <Transaction>2021/08/24 12:23:52.000.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas</Transaction>
+    <Transaction>2021/08/24 12:24:04.000.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas</Transaction>
+    <Transaction>2021/08/24 12:24:04.000.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm</Transaction>
+    <Transaction>2021/08/24 12:40:21.000.179,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/24 12:45:44.000.750,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm</Transaction>
+    <Transaction>2021/08/24 12:45:44.000.750,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="uDm.pas"/>
     <File Path="uDm.dfm"/>
     <File Path="uFrmCadastrar.pas"/>

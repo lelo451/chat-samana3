@@ -16,8 +16,8 @@ begin
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
   Application.CreateForm(TFrmPrincipal, FrmPrincipal);
-  Application.CreateForm(TFrmCadastrar, FrmCadastrar);
   Application.CreateForm(TDm, Dm);
+  Application.CreateForm(TFrmCadastrar, FrmCadastrar);
   Application.CreateForm(TFrmLogin, FrmLogin);
   Application.CreateForm(TFrmChat, FrmChat);
   Application.CreateForm(TFrmSingleChat, FrmSingleChat);
