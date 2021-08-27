@@ -8,7 +8,8 @@ uses
   uFrmLogin in 'uFrmLogin.pas' {FrmLogin},
   uFrmGroupChat in 'uFrmGroupChat.pas' {FrmChat},
   uFrmSingleChat in 'uFrmSingleChat.pas' {FrmSingleChat},
-  uFrmChoice in 'uFrmChoice.pas' {FrmChoice};
+  uFrmChoice in 'uFrmChoice.pas' {FrmChoice},
+  uCommom in 'uCommom.pas';
 
 {$R *.res}
 

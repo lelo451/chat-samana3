@@ -2,39 +2,46 @@
 <BorlandProject>
 	<Transactions>
     <Transaction>2021/08/22 12:39:48.000.270,=C:\Users\w\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 12:40:16.000.336,C:\Users\w\Documents\DELPHI\uPrincipal.dfm=C:\Users\w\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
-    <Transaction>2021/08/22 12:40:16.000.336,C:\Users\w\Documents\DELPHI\uPrincipal.pas=C:\Users\w\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 12:40:57.000.429,C:\Users\w\Documents\DELPHI\Aplicação.dproj=C:\Users\w\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2021/08/22 12:41:12.000.423,C:\Users\w\Documents\DELPHI\uFrmPrincipal.pas=C:\Users\w\Documents\DELPHI\uPrincipal.pas</Transaction>
-    <Transaction>2021/08/22 12:41:12.000.423,C:\Users\w\Documents\DELPHI\uFrmPrincipal.dfm=C:\Users\w\Documents\DELPHI\uPrincipal.dfm</Transaction>
+    <Transaction>2021/08/22 12:40:16.000.336,C:\Users\w\Documents\Embarcadero\Studio\Projects\Unit1.dfm=C:\Users\w\Documents\DELPHI\uPrincipal.dfm</Transaction>
+    <Transaction>2021/08/22 12:40:16.000.336,C:\Users\w\Documents\Embarcadero\Studio\Projects\Unit1.pas=C:\Users\w\Documents\DELPHI\uPrincipal.pas</Transaction>
+    <Transaction>2021/08/22 12:40:57.000.429,C:\Users\w\Documents\Embarcadero\Studio\Projects\Project1.dproj=C:\Users\w\Documents\DELPHI\Aplicação.dproj</Transaction>
+    <Transaction>2021/08/22 12:41:12.000.423,C:\Users\w\Documents\DELPHI\uPrincipal.pas=C:\Users\w\Documents\DELPHI\uFrmPrincipal.pas</Transaction>
+    <Transaction>2021/08/22 12:41:12.000.423,C:\Users\w\Documents\DELPHI\uPrincipal.dfm=C:\Users\w\Documents\DELPHI\uFrmPrincipal.dfm</Transaction>
     <Transaction>2021/08/22 12:48:39.000.211,=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 12:48:58.000.122,C:\Users\w\Documents\DELPHI\uFrmCadastrar.pas=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 12:48:58.000.122,C:\Users\w\Documents\DELPHI\uFrmCadastrar.dfm=C:\Users\w\Documents\DELPHI\Unit1.dfm</Transaction>
+    <Transaction>2021/08/22 12:48:58.000.122,C:\Users\w\Documents\DELPHI\Unit1.pas=C:\Users\w\Documents\DELPHI\uFrmCadastrar.pas</Transaction>
+    <Transaction>2021/08/22 12:48:58.000.122,C:\Users\w\Documents\DELPHI\Unit1.dfm=C:\Users\w\Documents\DELPHI\uFrmCadastrar.dfm</Transaction>
     <Transaction>2021/08/22 13:06:41.000.400,=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 13:07:28.000.882,C:\Users\w\Documents\DELPHI\uDataModule01.dfm=C:\Users\w\Documents\DELPHI\Unit1.dfm</Transaction>
-    <Transaction>2021/08/22 13:07:28.000.882,C:\Users\w\Documents\DELPHI\uDataModule01.pas=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
+    <Transaction>2021/08/22 13:07:28.000.882,C:\Users\w\Documents\DELPHI\Unit1.pas=C:\Users\w\Documents\DELPHI\uDataModule01.pas</Transaction>
+    <Transaction>2021/08/22 13:07:28.000.882,C:\Users\w\Documents\DELPHI\Unit1.dfm=C:\Users\w\Documents\DELPHI\uDataModule01.dfm</Transaction>
     <Transaction>2021/08/22 13:20:48.000.947,=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 13:21:06.000.051,C:\Users\w\Documents\DELPHI\uFrmLogin.dfm=C:\Users\w\Documents\DELPHI\Unit1.dfm</Transaction>
-    <Transaction>2021/08/22 13:21:06.000.051,C:\Users\w\Documents\DELPHI\uFrmLogin.pas=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
+    <Transaction>2021/08/22 13:21:06.000.051,C:\Users\w\Documents\DELPHI\Unit1.dfm=C:\Users\w\Documents\DELPHI\uFrmLogin.dfm</Transaction>
+    <Transaction>2021/08/22 13:21:06.000.051,C:\Users\w\Documents\DELPHI\Unit1.pas=C:\Users\w\Documents\DELPHI\uFrmLogin.pas</Transaction>
     <Transaction>2021/08/22 13:38:34.000.607,=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 13:39:07.000.942,C:\Users\w\Documents\DELPHI\uFrmChat.pas=C:\Users\w\Documents\DELPHI\Unit1.pas</Transaction>
-    <Transaction>2021/08/22 13:39:07.000.942,C:\Users\w\Documents\DELPHI\uFrmChat.dfm=C:\Users\w\Documents\DELPHI\Unit1.dfm</Transaction>
+    <Transaction>2021/08/22 13:39:07.000.942,C:\Users\w\Documents\DELPHI\Unit1.pas=C:\Users\w\Documents\DELPHI\uFrmChat.pas</Transaction>
+    <Transaction>2021/08/22 13:39:07.000.942,C:\Users\w\Documents\DELPHI\Unit1.dfm=C:\Users\w\Documents\DELPHI\uFrmChat.dfm</Transaction>
     <Transaction>2021/08/23 17:33:02.000.702,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 10:58:56.000.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.pas</Transaction>
-    <Transaction>2021/08/24 10:58:56.000.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.dfm</Transaction>
+    <Transaction>2021/08/24 10:58:56.000.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.dfm</Transaction>
+    <Transaction>2021/08/24 10:58:56.000.828,C:\Users\Archer\Documents\Git clone\chat-samana3\uDataModule01.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uDm.pas</Transaction>
     <Transaction>2021/08/24 11:03:41.000.188,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
     <Transaction>2021/08/24 12:17:41.000.444,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 12:19:03.000.386,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm</Transaction>
-    <Transaction>2021/08/24 12:19:03.000.386,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 12:19:11.000.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.dfm</Transaction>
-    <Transaction>2021/08/24 12:19:11.000.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.pas</Transaction>
-    <Transaction>2021/08/24 12:23:52.000.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm</Transaction>
-    <Transaction>2021/08/24 12:23:52.000.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas</Transaction>
-    <Transaction>2021/08/24 12:24:04.000.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas</Transaction>
-    <Transaction>2021/08/24 12:24:04.000.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm</Transaction>
+    <Transaction>2021/08/24 12:19:03.000.386,C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm</Transaction>
+    <Transaction>2021/08/24 12:19:03.000.386,C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas</Transaction>
+    <Transaction>2021/08/24 12:19:11.000.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm</Transaction>
+    <Transaction>2021/08/24 12:19:11.000.144,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChat.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas</Transaction>
+    <Transaction>2021/08/24 12:23:52.000.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.pas</Transaction>
+    <Transaction>2021/08/24 12:23:52.000.466,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatSingle.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmSingleChat.dfm</Transaction>
+    <Transaction>2021/08/24 12:24:04.000.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.dfm</Transaction>
+    <Transaction>2021/08/24 12:24:04.000.519,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChatGroup.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmGroupChat.pas</Transaction>
     <Transaction>2021/08/24 12:40:21.000.179,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
-    <Transaction>2021/08/24 12:45:44.000.750,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm</Transaction>
-    <Transaction>2021/08/24 12:45:44.000.750,C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/24 12:45:44.000.750,C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.dfm=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.dfm</Transaction>
+    <Transaction>2021/08/24 12:45:44.000.750,C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\uFrmChoice.pas</Transaction>
+    <Transaction>2021/08/27 12:19:25.672,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/27 12:19:38.215,C:\Users\Archer\Documents\Git clone\chat-samana3\uCommom.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/27 12:20:36.272,C:\Users\Archer\Documents\Git clone\chat-samana3\uCommom.pas=</Transaction>
+    <Transaction>2021/08/27 12:20:41.620,=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/27 12:20:51.341,C:\Users\Archer\Documents\Git clone\chat-samana3\uCommom.pas=C:\Users\Archer\Documents\Git clone\chat-samana3\Unit1.pas</Transaction>
+    <Transaction>2021/08/27 12:22:50.079,C:\Users\Archer\Documents\Git clone\chat-samana3\uCommom.pas=</Transaction>
+    <Transaction>2021/08/27 12:23:10.648,=C:\Users\Archer\Documents\Git clone\chat-samana3\uCommom.pas</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="uDm.pas"/>
@@ -51,5 +58,6 @@
     <File Path="uFrmSingleChat.dfm"/>
     <File Path="uFrmChoice.pas"/>
     <File Path="uFrmChoice.dfm"/>
+    <File Path="uCommom.pas"/>
   </ProjectSortOrder>
 </BorlandProject>

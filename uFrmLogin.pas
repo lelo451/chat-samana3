@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, uFrmGroupChat, uFrmChoice, uFrmSingleChat,
-  Data.DB, System.UITypes, FireDAC.Stan.Param;
+  Data.DB, System.UITypes, FireDAC.Stan.Param, uCommom;
 
 type
   TFrmLogin = class(TForm)
@@ -15,10 +15,13 @@ type
     BtEntrar: TButton;
     procedure BtEntrarClick(Sender: TObject);
     procedure EdApelidoKeyPress(Sender: TObject; var Key: Char);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
+    Global : TGlobal;
   end;
 
 var
@@ -47,6 +50,8 @@ begin
     begin
       FrmChat.Apelido := EdApelido.Text;
       FrmChat.Email := EdEmail.Text;
+
+      Global.Email := EdEmail.Text;
 
       FrmSingleChat.Apelido := EdApelido.Text;
       FrmSingleChat.Email := EdEmail.Text;
@@ -83,6 +88,16 @@ begin
   begin
     BtEntrar.Click;
   end;
+end;
+
+procedure TFrmLogin.FormCreate(Sender: TObject);
+begin
+  Global := TGlobal.Create;
+end;
+
+procedure TFrmLogin.FormDestroy(Sender: TObject);
+begin
+  Global.Free;
 end;
 
 end.
