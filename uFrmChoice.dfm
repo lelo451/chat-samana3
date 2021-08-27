@@ -29,48 +29,37 @@ object FrmChoice: TFrmChoice
     Font.Style = [fsBold]
     ParentFont = False
   end
-  object Button1: TButton
-    Left = 102
-    Top = 64
-    Width = 129
-    Height = 41
-    Caption = 'TODOS'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 0
-    OnClick = Button1Click
-  end
-  object Button2: TButton
-    Left = 102
-    Top = 257
-    Width = 129
-    Height = 41
-    Caption = 'SELECIONAR'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -16
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 1
-    OnClick = Button2Click
-  end
   object DBGListUser: TDBGrid
     Left = 16
     Top = 111
     Width = 300
     Height = 140
     DataSource = DSUser
-    TabOrder = 2
+    TabOrder = 0
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+  end
+  object PnlBtnGeral: TPanel
+    Left = 102
+    Top = 64
+    Width = 129
+    Height = 41
+    Caption = 'TODOS'
+    ParentBackground = False
+    TabOrder = 1
+    OnClick = PnlBtnGeralClick
+  end
+  object PnlBtnIndividual: TPanel
+    Left = 102
+    Top = 257
+    Width = 129
+    Height = 41
+    Caption = 'SELECIONAR'
+    TabOrder = 2
+    OnClick = PnlBtnIndividualClick
   end
   object Timer1: TTimer
     Enabled = False

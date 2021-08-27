@@ -124,6 +124,7 @@ object FrmChat: TFrmChat
         '')
       ParentFont = False
       ReadOnly = True
+      ScrollBars = ssVertical
       TabOrder = 0
     end
   end

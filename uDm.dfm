@@ -61,12 +61,14 @@ object Dm: TDm
   object Query: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg'
+      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.IDMENSAGEM as id'
       'FROM CHATUSUARIO C, MENSAGEM M'
       'WHERE'
       'M.REMETENTE = C.EMAILUSU'
       'AND'
       'M.DESTINATARIO = :dest'
+      'AND'
+      'M.IDMENSAGEM > :idmsg'
       'ORDER BY M.IDMENSAGEM')
     Left = 312
     Top = 160
@@ -76,6 +78,12 @@ object Dm: TDm
         DataType = ftString
         ParamType = ptInput
         Value = 'ALL'
+      end
+      item
+        Name = 'IDMSG'
+        DataType = ftString
+        ParamType = ptInput
+        Value = '0'
       end>
   end
   object TableMensagem: TFDTable

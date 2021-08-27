@@ -9,17 +9,17 @@ uses
 
 type
   TFrmChoice = class(TForm)
-    Button1: TButton;
     Label1: TLabel;
-    Button2: TButton;
     Timer1: TTimer;
     DSUser: TDataSource;
     DBGListUser: TDBGrid;
+    PnlBtnGeral: TPanel;
+    PnlBtnIndividual: TPanel;
     procedure FormShow(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    procedure PnlBtnGeralClick(Sender: TObject);
+    procedure PnlBtnIndividualClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -33,14 +33,29 @@ implementation
 
 {$R *.dfm}
 
-procedure TFrmChoice.Button1Click(Sender: TObject);
+procedure TFrmChoice.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Timer1.Enabled := False;
+end;
+
+procedure TFrmChoice.FormShow(Sender: TObject);
+begin
+  Timer1.Enabled := True;
+end;
+
+procedure TFrmChoice.Timer1Timer(Sender: TObject);
+begin
+  Dm.QueryUsuOnline.Open('SELECT NomeUsu as Online, EmailUsu as email FROM chatusuario WHERE Online = 1;');
+end;
+
+procedure TFrmChoice.PnlBtnGeralClick(Sender: TObject);
 begin
   FrmChat.UpdateMemo;
   FrmChat.Show;
   FrmChoice.Close;
 end;
 
-procedure TFrmChoice.Button2Click(Sender: TObject);
+procedure TFrmChoice.PnlBtnIndividualClick(Sender: TObject);
 var
   EmailDestinatario, EmailRemetente, ApelidoRecipiente: String;
 begin
@@ -57,21 +72,6 @@ begin
       FrmSingleChat.Show;
       FrmChoice.Close;
     end;
-end;
-
-procedure TFrmChoice.FormClose(Sender: TObject; var Action: TCloseAction);
-begin
-  Timer1.Enabled := False;
-end;
-
-procedure TFrmChoice.FormShow(Sender: TObject);
-begin
-  Timer1.Enabled := True;
-end;
-
-procedure TFrmChoice.Timer1Timer(Sender: TObject);
-begin
-  Dm.QueryUsuOnline.Open('SELECT NomeUsu as Online, EmailUsu as email FROM chatusuario WHERE Online = 1;');
 end;
 
 end.

@@ -46,6 +46,7 @@ procedure TFrmSingleChat.BtnChatClearClick(Sender: TObject);
 begin
   EdTexto.Text := '';
 end;
+
 procedure TFrmSingleChat.BtnChatOkClick(Sender: TObject);
 var
   Mensagem, From, Destinario: String;
@@ -70,6 +71,7 @@ begin
     EdTexto.SetFocus;
   end;
 end;
+
 procedure TFrmSingleChat.EdTextoKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -77,6 +79,7 @@ begin
       BtnChatOk.Click;
     end;
 end;
+
 procedure TFrmSingleChat.FormShow(Sender: TObject);
 begin
   if Apelido <> '' then
@@ -89,6 +92,7 @@ begin
     LbApelidoRecipiente.Caption := 'Anônimo';
   LbStatus.Caption := 'ONLINE';
 end;
+
 procedure TFrmSingleChat.Timer1Timer(Sender: TObject);
 begin
   FrmSingleChat.UpdateMemo();

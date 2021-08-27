@@ -3,7 +3,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param;
+  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param, FireDAC.Comp.Client;
 type
   TFrmChat = class(TForm)
     PanelTop: TPanel;
@@ -27,12 +27,15 @@ type
   private
     FApelido: String;
     FEmail: String;
+    var
+      LastIdMensage : String;
     { Private declarations }
   public
     { Public declarations }
     property Apelido : String read FApelido write FApelido;
     property Email : String read FEmail write FEmail;
     procedure UpdateMemo();
+    procedure updateChatGlobal();
   end;
 var
   FrmChat: TFrmChat;
@@ -58,11 +61,13 @@ begin
       TableMensagem.Post;
       TableMensagem.Close;
     end;
-    MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
+    FrmChat.updateChatGlobal;
+//    MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
     EdTexto.Text := '';
     EdTexto.SetFocus;
   end;
 end;
+
 procedure TFrmChat.EdTextoKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
@@ -70,10 +75,12 @@ begin
       BtnChatOk.Click;
     end;
 end;
+
 procedure TFrmChat.BtnChatClearClick(Sender: TObject);
 begin
   EdTexto.Text := '';
 end;
+
 procedure TFrmChat.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   with Dm.TableUsuario do
@@ -86,9 +93,10 @@ begin
   end;
   Timer01.Enabled := False;
 end;
+
 procedure TFrmChat.FormShow(Sender: TObject);
 begin
-  UpdateMemo;
+  FrmChat.UpdateMemo;
   Timer01.Enabled := True;
   if Apelido <> '' then
     LbApelido.Caption := Apelido
@@ -96,11 +104,35 @@ begin
     LbApelido.Caption := 'Anônimo';
   LbStatus.Caption := 'ONLINE';
 end;
+
 procedure TFrmChat.Timer01Timer(Sender: TObject);
 begin
   Dm.QueryUsuOnline.Open('SELECT NomeUsu FROM chatusuario WHERE Online = 1;');
-  UpdateMemo;
+  updateChatGlobal;
 end;
+
+procedure TFrmChat.updateChatGlobal();
+begin
+  with Dm.Query do
+  begin
+    Params[1].Value := LastIdMensage;
+    Open;
+    if not IsEmpty then
+    begin
+      try
+        while not EoF do
+        begin
+          FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+          FrmChat.LastIdMensage := Fields[2].Text;
+          Next;
+        end;
+      finally
+        Close;
+      end;
+    end;
+  end;
+end;
+
 procedure TFrmChat.UpdateMemo();
 begin
   FrmChat.MChatConteudo.Clear;
@@ -111,6 +143,7 @@ begin
       while not EoF do
       begin
         FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+        FrmChat.LastIdMensage := Fields[2].Text;
         Next;
       end;
     finally
@@ -118,4 +151,6 @@ begin
     end;
   end;
 end;
+
+
 end.

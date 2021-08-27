@@ -160,6 +160,7 @@ object FrmSingleChat: TFrmSingleChat
     end
   end
   object Timer1: TTimer
+    Enabled = False
     Interval = 2000
     OnTimer = Timer1Timer
     Left = 424
