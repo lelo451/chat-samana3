@@ -5,7 +5,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.DBCtrls, Data.DB, uDm,
-  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, uFrmGroupChat, uFrmSingleChat;
+  Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, uFrmGroupChat, uFrmSingleChat, uCommom;
 
 type
   TFrmChoice = class(TForm)
@@ -24,6 +24,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    Global : TGlobal;
   end;
 
 var
@@ -61,6 +62,8 @@ var
 begin
   EmailDestinatario := DBGListUser.Columns.Items[1].Field.Text;
   ApelidoRecipiente := DBGListUser.Columns.Items[0].Field.Text;
+  Global.EmailDestinatario := EmailDestinatario;
+  Global.ApelidoDestinatario := ApelidoRecipiente;
   EmailRemetente := FrmSingleChat.Email;
   if EmailRemetente = EmailDestinatario then
     ShowMessage('Você não pode enviar mensagem para você mesmo!')

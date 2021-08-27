@@ -3,7 +3,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Grids, Vcl.DBGrids, uDm, System.Notification;
+  Vcl.Grids, Vcl.DBGrids, uDm, System.Notification, uCommom;
 type
   TFrmSingleChat = class(TForm)
     Panel1: TPanel;
@@ -34,6 +34,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    Global : TGlobal;
     property Apelido : String read FApelido write FApelido;
     property Email : String read FEmail write FEmail;
     property EmailRecipiente : String read FEmailRecipiente write FEmailRecipiente;
@@ -109,8 +110,8 @@ begin
   MyNotification := NotificationCenter1.CreateNotification;
   with Dm.QueryIndividual do
   begin
-    Params[0].Value := EmailRecipiente;
-    Params[1].Value := Email;
+    Params[0].Value := Global.EmailDestinatario;
+    Params[1].Value := Global.Email;
     Params[2].Value := LastIdMensage;
     Open;
     if not IsEmpty then
@@ -143,8 +144,8 @@ begin
   FrmSingleChat.MChatConteudo.Clear;
   with Dm.QueryIndividual do
   begin
-    Params[0].Value := EmailRecipiente;
-    Params[1].Value := Email;
+    Params[0].Value := Global.EmailDestinatario;
+    Params[1].Value := Global.Email;
     Open;
     try
       while not EoF do

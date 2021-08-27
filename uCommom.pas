@@ -8,6 +8,8 @@ type
   TGlobal = class
   Email : String;
   Apelido : String;
+  EmailDestinatario : String;
+  ApelidoDestinatario : String;
 
   procedure AtivarDataModule;
   procedure DesativarDataModule;

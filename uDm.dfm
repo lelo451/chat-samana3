@@ -11,6 +11,7 @@ object Dm: TDm
       'Port=12690'
       'Protocol=TCPIP'
       'DriverID=FB')
+    Connected = True
     LoginPrompt = False
     Left = 40
     Top = 40
@@ -123,14 +124,14 @@ object Dm: TDm
         Name = 'DEST'
         DataType = ftString
         ParamType = ptInput
-        Value = 'weslley@hotmail.com'
+        Value = Null
       end
       item
         Name = 'REM'
         DataType = ftString
         ParamType = ptInput
         Size = 100
-        Value = 'felipefazzano@hotmail.com'
+        Value = Null
       end
       item
         Name = 'IDMSG'
