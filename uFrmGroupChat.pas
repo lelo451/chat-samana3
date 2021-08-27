@@ -3,7 +3,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param, FireDAC.Comp.Client;
+  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param, FireDAC.Comp.Client, System.Notification;
 type
   TFrmChat = class(TForm)
     PanelTop: TPanel;
@@ -18,6 +18,7 @@ type
     BtnChatOk: TButton;
     BtnChatClear: TButton;
     Timer01: TTimer;
+    NotificationCenter1: TNotificationCenter;
     procedure FormShow(Sender: TObject);
     procedure Timer01Timer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -27,11 +28,11 @@ type
   private
     FApelido: String;
     FEmail: String;
-    var
-      LastIdMensage : String;
+    LastIdMensage : String;
     { Private declarations }
   public
     { Public declarations }
+    Notification : TNotification;
     property Apelido : String read FApelido write FApelido;
     property Email : String read FEmail write FEmail;
     procedure UpdateMemo();
@@ -111,7 +112,10 @@ begin
 end;
 
 procedure TFrmChat.updateChatGlobal();
+var
+  MyNotification : TNotification;
 begin
+  MyNotification := NotificationCenter1.CreateNotification;
   with Dm.Query do
   begin
     Params[0].Value := LastIdMensage;
@@ -123,10 +127,18 @@ begin
         begin
           FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
           FrmChat.LastIdMensage := Fields[2].Text;
+          if Fields[0].Text <> Apelido then
+          begin
+            MyNotification.Name := 'Windows10Notification';
+            MyNotification.Title := 'Mensagem Chat Global';
+            MyNotification.AlertBody := 'VIP SISTEMAS';
+            NotificationCenter1.PresentNotification(MyNotification);
+          end;
           Next;
         end;
       finally
         Close;
+        MyNotification.Free;
       end;
     end;
     Close;

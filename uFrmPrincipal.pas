@@ -16,6 +16,7 @@ type
     procedure Panel2Click(Sender: TObject);
     procedure Panel1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure FormShow(Sender: TObject);
   private
     { Private declarations }
   public
@@ -42,6 +43,12 @@ begin
     ParamByName('pnom').AsString := Global.Email;
     ExecSQL;
   end;
+  Global.DesativarDataModule;
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+  Global.AtivarDataModule;
 end;
 
 procedure TFrmPrincipal.Panel1Click(Sender: TObject);

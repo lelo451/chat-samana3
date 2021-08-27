@@ -172,4 +172,8 @@ object FrmChat: TFrmChat
     Left = 264
     Top = 8
   end
+  object NotificationCenter1: TNotificationCenter
+    Left = 488
+    Top = 8
+  end
 end

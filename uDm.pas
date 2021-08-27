@@ -26,6 +26,7 @@ type
     TableMensagemREMETENTE: TStringField;
     TableMensagemDESTINATARIO: TStringField;
     QueryIndividual: TFDQuery;
+    QueryIndividualHasMensagem: TFDQuery;
   private
     { Private declarations }
   public

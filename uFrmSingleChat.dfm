@@ -166,4 +166,8 @@ object FrmSingleChat: TFrmSingleChat
     Left = 424
     Top = 16
   end
+  object NotificationCenter1: TNotificationCenter
+    Left = 360
+    Top = 16
+  end
 end

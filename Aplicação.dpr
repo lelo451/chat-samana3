@@ -23,5 +23,6 @@ begin
   Application.CreateForm(TFrmChat, FrmChat);
   Application.CreateForm(TFrmSingleChat, FrmSingleChat);
   Application.CreateForm(TFrmChoice, FrmChoice);
+  FrmPrincipal.Global := FrmLogin.Global;
   Application.Run;
 end.

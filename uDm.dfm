@@ -106,7 +106,7 @@ object Dm: TDm
   object QueryIndividual: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg'
+      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.IDMENSAGEM as id'
       'FROM CHATUSUARIO C, MENSAGEM M'
       'WHERE'
       'M.REMETENTE = C.EMAILUSU'
@@ -114,9 +114,11 @@ object Dm: TDm
       'M.DESTINATARIO in (:dest, :rem)'
       'AND'
       'M.REMETENTE in (:dest, :rem)'
+      'AND'
+      'M.IDMENSAGEM > :idmsg'
       'ORDER BY M.IDMENSAGEM')
     Left = 376
-    Top = 168
+    Top = 160
     ParamData = <
       item
         Name = 'DEST'
@@ -130,6 +132,35 @@ object Dm: TDm
         ParamType = ptInput
         Size = 100
         Value = 'felipefazzano@hotmail.com'
+      end
+      item
+        Name = 'IDMSG'
+        DataType = ftString
+        ParamType = ptInput
+        Value = '0'
+      end>
+  end
+  object QueryIndividualHasMensagem: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select distinct(apelido) from'
+      
+        '(SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.DESTINATARIO as ' +
+        'dest, M.REMETENTE as rem, M.IDMENSAGEM as idmsg'
+      'FROM CHATUSUARIO C, MENSAGEM M'
+      'WHERE'
+      'M.REMETENTE = C.EMAILUSU'
+      'AND'
+      'M.DESTINATARIO in (:dest)'
+      'ORDER BY M.IDMENSAGEM)')
+    Left = 376
+    Top = 216
+    ParamData = <
+      item
+        Name = 'DEST'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'weslley@hotmail.com'
       end>
   end
 end

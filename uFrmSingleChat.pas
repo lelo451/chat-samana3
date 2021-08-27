@@ -3,7 +3,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Grids, Vcl.DBGrids, uDm;
+  Vcl.Grids, Vcl.DBGrids, uDm, System.Notification;
 type
   TFrmSingleChat = class(TForm)
     Panel1: TPanel;
@@ -19,6 +19,7 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Timer1: TTimer;
+    NotificationCenter1: TNotificationCenter;
     procedure FormShow(Sender: TObject);
     procedure BtnChatClearClick(Sender: TObject);
     procedure EdTextoKeyPress(Sender: TObject; var Key: Char);
@@ -29,6 +30,7 @@ type
     FEmail: String;
     FEmailRecipiente: String;
     FApelidoRecipiente: String;
+    LastIdMensage : String;
     { Private declarations }
   public
     { Public declarations }
@@ -37,6 +39,7 @@ type
     property EmailRecipiente : String read FEmailRecipiente write FEmailRecipiente;
     property ApelidoRecipiente : String read FApelidoRecipiente write FApelidoRecipiente;
     procedure UpdateMemo();
+    procedure updateChatIndividual();
   end;
 var
   FrmSingleChat: TFrmSingleChat;
@@ -98,6 +101,43 @@ begin
   FrmSingleChat.UpdateMemo();
 end;
 
+
+procedure TFrmSingleChat.updateChatIndividual();
+var
+  MyNotification : TNotification;
+begin
+  MyNotification := NotificationCenter1.CreateNotification;
+  with Dm.QueryIndividual do
+  begin
+    Params[0].Value := EmailRecipiente;
+    Params[1].Value := Email;
+    Params[2].Value := LastIdMensage;
+    Open;
+    if not IsEmpty then
+    begin
+      try
+        while not EoF do
+        begin
+          FrmSingleChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+          FrmSingleChat.LastIdMensage := Fields[2].Text;
+          if Fields[0].Text <> Apelido then
+          begin
+            MyNotification.Name := 'Windows10Notification';
+            MyNotification.Title := 'Mensagem Chat ' + ApelidoRecipiente;
+            MyNotification.AlertBody := 'VIP SISTEMAS';
+            NotificationCenter1.PresentNotification(MyNotification);
+          end;
+          Next;
+        end;
+      finally
+        Close;
+        MyNotification.Free;
+      end;
+    end;
+    Close;
+  end;
+end;
+
 procedure TFrmSingleChat.UpdateMemo();
 begin
   FrmSingleChat.MChatConteudo.Clear;
@@ -110,11 +150,13 @@ begin
       while not EoF do
       begin
         FrmSingleChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+        FrmSingleChat.LastIdMensage := Fields[2].Text;
         Next;
       end;
     finally
       Close;
     end;
+    Close;
   end;
 end;
 end.
