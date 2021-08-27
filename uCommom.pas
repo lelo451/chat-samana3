@@ -7,6 +7,7 @@ uses uDm;
 type
   TGlobal = class
   Email : String;
+  Apelido : String;
 
   procedure AtivarDataModule;
   procedure DesativarDataModule;

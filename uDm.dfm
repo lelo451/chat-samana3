@@ -17,6 +17,7 @@ object Dm: TDm
     Top = 40
   end
   object QueryUsuario: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'SELECT * FROM chatusuario;')
@@ -24,6 +25,7 @@ object Dm: TDm
     Top = 128
   end
   object TableUsuario: TFDTable
+    Active = True
     IndexFieldNames = 'EMAILUSU'
     Connection = FDConnection
     UpdateOptions.UpdateTableName = 'CHATUSUARIO'
@@ -47,6 +49,7 @@ object Dm: TDm
     end
   end
   object QueryUsuOnline: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'SELECT NomeUsu, EmailUsu FROM chatusuario WHERE Online = 1; ')
@@ -59,6 +62,7 @@ object Dm: TDm
     Top = 64
   end
   object Query: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.IDMENSAGEM as id'
@@ -81,6 +85,7 @@ object Dm: TDm
       end>
   end
   object TableMensagem: TFDTable
+    Active = True
     IndexFieldNames = 'IDMENSAGEM'
     Connection = FDConnection
     TableName = 'MENSAGEM'
@@ -104,6 +109,7 @@ object Dm: TDm
     end
   end
   object QueryIndividual: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.IDMENSAGEM as id'

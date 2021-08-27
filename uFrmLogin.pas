@@ -38,28 +38,29 @@ begin
                   
   if (EdEmail.Text) <> '' then  //VALIDA SE O USUARIO TEM CONTA CADASTRADA NO BANCO
   begin
-    with Dm do
+    with Dm.QueryUsuario do
     begin
-      QueryUsuario.SQL.Clear;
-      QueryUsuario.SQL.Add('SELECT EmailUsu FROM chatusuario');
-      QueryUsuario.SQL.Add('WHERE EmailUsu = '+QuotedStr(Trim(EdEmail.Text)) );
-      QueryUsuario.Open;
+      SQL.Clear;
+      SQL.Add('SELECT EmailUsu as email, NomeUsu as nome FROM chatusuario');
+      SQL.Add('WHERE EmailUsu = '+QuotedStr(Trim(EdEmail.Text)) );
+      Open;
+
+      if not IsEmpty then
+      begin
+        FrmChat.Apelido := EdApelido.Text;
+        FrmChat.Email := EdEmail.Text;
+
+        Global.Email := EdEmail.Text;
+        Global.Apelido := Fields[1].Text;
+
+        FrmSingleChat.Apelido := EdApelido.Text;
+        FrmSingleChat.Email := EdEmail.Text;
+
+        //FrmChat.Show;
+        FrmChoice.Show;
+        FrmLogin.Close;
+      end;
     end;
-
-    if not Dm.QueryUsuario.IsEmpty then
-    begin
-      FrmChat.Apelido := EdApelido.Text;
-      FrmChat.Email := EdEmail.Text;
-
-      Global.Email := EdEmail.Text;
-
-      FrmSingleChat.Apelido := EdApelido.Text;
-      FrmSingleChat.Email := EdEmail.Text;
-
-      //FrmChat.Show;
-      FrmChoice.Show;
-      FrmLogin.Close;
-    end
   end
   else
   begin
@@ -73,13 +74,11 @@ begin
 
   with Dm.TableUsuario do
   begin //AQUI É ONDE O UPDATE ONLINE = 0 PARA ONLINE 1 OCORRE
-    Close;
     SQL.Clear;
     SQL.Add('UPDATE chatusuario SET Online = 1 WHERE EmailUsu =:pnom ');
-    ParamByName('pnom').AsString := EdEmail.Text;
+    ParamByName('pnom').AsString := Global.Email;
     ExecSQL;
   end;
-
 end;
 
 procedure TFrmLogin.EdApelidoKeyPress(Sender: TObject; var Key: Char);

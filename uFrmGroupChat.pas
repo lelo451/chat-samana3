@@ -3,7 +3,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Data.DB,
-  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param, FireDAC.Comp.Client, System.Notification;
+  Vcl.Grids, Vcl.DBGrids, FireDAC.Stan.Param, FireDAC.Comp.Client, System.Notification, uCommom;
 type
   TFrmChat = class(TForm)
     PanelTop: TPanel;
@@ -33,6 +33,7 @@ type
   public
     { Public declarations }
     Notification : TNotification;
+    Global : TGlobal;
     property Apelido : String read FApelido write FApelido;
     property Email : String read FEmail write FEmail;
     procedure UpdateMemo();
@@ -92,6 +93,7 @@ begin
     ExecSQL;
   end;
   Timer01.Enabled := False;
+  FrmChat.LastIdMensage := '0';
 end;
 
 procedure TFrmChat.FormShow(Sender: TObject);
@@ -127,7 +129,7 @@ begin
         begin
           FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
           FrmChat.LastIdMensage := Fields[2].Text;
-          if Fields[0].Text <> Apelido then
+          if Fields[0].Text <> Global.Apelido then
           begin
             MyNotification.Name := 'Windows10Notification';
             MyNotification.Title := 'Mensagem Chat Global';
