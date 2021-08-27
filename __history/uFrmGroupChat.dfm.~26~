@@ -124,6 +124,7 @@ object FrmChat: TFrmChat
         '')
       ParentFont = False
       ReadOnly = True
+      ScrollBars = ssVertical
       TabOrder = 0
     end
   end
@@ -160,6 +161,19 @@ object FrmChat: TFrmChat
     TabOrder = 5
     OnClick = BtnChatClearClick
   end
+  object DBGrid1: TDBGrid
+    Left = 56
+    Top = 216
+    Width = 320
+    Height = 120
+    DataSource = DataSource1
+    TabOrder = 6
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
   object DataSourceUsuarioOnline: TDataSource
     DataSet = Dm.QueryUsuOnline
     Left = 168
@@ -170,5 +184,10 @@ object FrmChat: TFrmChat
     OnTimer = Timer01Timer
     Left = 264
     Top = 8
+  end
+  object DataSource1: TDataSource
+    DataSet = Dm.Query
+    Left = 488
+    Top = 16
   end
 end

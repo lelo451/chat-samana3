@@ -18,7 +18,8 @@ type
     BtnChatOk: TButton;
     BtnChatClear: TButton;
     Timer01: TTimer;
-    LastDbMemo: TMemo;
+    DBGrid1: TDBGrid;
+    DataSource1: TDataSource;
     procedure FormShow(Sender: TObject);
     procedure Timer01Timer(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -36,6 +37,7 @@ type
     property Apelido : String read FApelido write FApelido;
     property Email : String read FEmail write FEmail;
     procedure UpdateMemo();
+    procedure updateChatGlobal();
   end;
 var
   FrmChat: TFrmChat;
@@ -61,7 +63,8 @@ begin
       TableMensagem.Post;
       TableMensagem.Close;
     end;
-    MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
+    FrmChat.updateChatGlobal;
+//    MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
     EdTexto.Text := '';
     EdTexto.SetFocus;
   end;
@@ -95,7 +98,7 @@ end;
 
 procedure TFrmChat.FormShow(Sender: TObject);
 begin
-  UpdateMemo;
+  FrmChat.UpdateMemo;
   Timer01.Enabled := True;
   if Apelido <> '' then
     LbApelido.Caption := Apelido
@@ -107,23 +110,26 @@ end;
 procedure TFrmChat.Timer01Timer(Sender: TObject);
 begin
   Dm.QueryUsuOnline.Open('SELECT NomeUsu FROM chatusuario WHERE Online = 1;');
+  updateChatGlobal;
+end;
+
+procedure TFrmChat.updateChatGlobal();
+begin
   with Dm.Query do
   begin
     Params[1].Value := LastIdMensage;
     Open;
     if not IsEmpty then
     begin
-      ShowMessage('Esttou aqui');
       try
         while not EoF do
         begin
-          FrmChat.LastDbMemo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
-          LastIdMensage := Fields[2].Text;
+          FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+          FrmChat.LastIdMensage := Fields[2].Text;
           Next;
         end;
       finally
         Close;
-        FrmChat.MChatConteudo.Lines.Text := FrmChat.LastDbMemo.Lines.Text;
       end;
     end;
   end;
@@ -138,14 +144,15 @@ begin
     try
       while not EoF do
       begin
-        FrmChat.LastDbMemo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
-        LastIdMensage := Fields[2].Text;
+        FrmChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
+        FrmChat.LastIdMensage := Fields[2].Text;
         Next;
       end;
     finally
       Close;
-      FrmChat.MChatConteudo.Lines.Text := FrmChat.LastDbMemo.Lines.Text;
     end;
   end;
 end;
+
+
 end.

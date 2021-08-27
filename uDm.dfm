@@ -66,19 +66,13 @@ object Dm: TDm
       'WHERE'
       'M.REMETENTE = C.EMAILUSU'
       'AND'
-      'M.DESTINATARIO = :dest'
+      'M.DESTINATARIO = '#39'ALL'#39
       'AND'
       'M.IDMENSAGEM > :idmsg'
       'ORDER BY M.IDMENSAGEM')
     Left = 312
     Top = 160
     ParamData = <
-      item
-        Name = 'DEST'
-        DataType = ftString
-        ParamType = ptInput
-        Value = 'ALL'
-      end
       item
         Name = 'IDMSG'
         DataType = ftString

@@ -62,7 +62,6 @@ begin
       TableMensagem.Close;
     end;
     FrmChat.updateChatGlobal;
-//    MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
     EdTexto.Text := '';
     EdTexto.SetFocus;
   end;
@@ -115,7 +114,7 @@ procedure TFrmChat.updateChatGlobal();
 begin
   with Dm.Query do
   begin
-    Params[1].Value := LastIdMensage;
+    Params[0].Value := LastIdMensage;
     Open;
     if not IsEmpty then
     begin
@@ -130,6 +129,7 @@ begin
         Close;
       end;
     end;
+    Close;
   end;
 end;
 
@@ -149,6 +149,7 @@ begin
     finally
       Close;
     end;
+    Close;
   end;
 end;
 
