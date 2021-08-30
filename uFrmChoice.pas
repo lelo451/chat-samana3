@@ -17,8 +17,10 @@ type
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure PnlBtnGeralClick(Sender: TObject);
     procedure PnlBtnIndividualClick(Sender: TObject);
+    procedure HasNewMessage();
   private
     { Private declarations }
+    LastIdMensage : String;
   public
     { Public declarations }
     Global : TGlobal;
@@ -31,14 +33,41 @@ procedure TFrmChoice.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   Timer1.Enabled := False;
 end;
+
 procedure TFrmChoice.FormShow(Sender: TObject);
 begin
   Timer1.Enabled := True;
+  with Dm.Query do
+  begin
+    Params[0].Value := 0;
+    Open;
+    Last;
+    LastIdMensage := Fields[2].Text;
+  end;
 end;
+
+procedure TFrmChoice.HasNewMessage();
+begin
+  with Dm.Query do
+  begin
+    Params[0].Value := LastIdMensage;
+    Open;
+    if not IsEmpty then
+    begin
+      Last;
+      ShowMessage('Mensagem nova no global');
+      FrmChoice.LastIdMensage := Fields[2].Text;
+    end;
+    Close;
+  end;
+end;
+
 procedure TFrmChoice.Timer1Timer(Sender: TObject);
 begin
   Dm.QueryUsuOnline.Open('SELECT NomeUsu as Online, EmailUsu as email FROM chatusuario WHERE Online = 1;');
+  FrmChoice.HasNewMessage;
 end;
+
 procedure TFrmChoice.PnlBtnGeralClick(Sender: TObject);
 begin
   FrmChat.UpdateMemo;

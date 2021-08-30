@@ -2,7 +2,7 @@ unit uCommom;
 
 interface
 
-uses uDm, Vcl.Dialogs;
+uses uDm, Vcl.Dialogs, System.Classes;
 
 type
   TGlobal = class
@@ -53,20 +53,30 @@ end;
 
 procedure TGlobal.SetEmailOffline;
 begin
-  with Dm.QuerySetOffline do
-  begin
-    Params[0].Value := Email;
-    Execute;
-  end;
+  Tthread.CreateAnonymousThread(
+    procedure
+    begin
+      with Dm.QuerySetOffline do
+      begin
+        Params[0].Value := Email;
+        Execute;
+      end;
+    end
+  ).Start;
 end;
 
 procedure TGlobal.SetEmailOnline;
 begin
-  with Dm.QuerySetOnline do
-  begin
-    Params[0].Value := Email;
-    Execute;
-  end;
+  Tthread.CreateAnonymousThread(
+    procedure
+    begin
+          with Dm.QuerySetOnline do
+          begin
+            Params[0].Value := Email;
+            Execute;
+          end;
+    end
+  ).Start;
 end;
 
 end.
