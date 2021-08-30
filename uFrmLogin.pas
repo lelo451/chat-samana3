@@ -15,8 +15,6 @@ type
     BtEntrar: TButton;
     procedure BtEntrarClick(Sender: TObject);
     procedure EdApelidoKeyPress(Sender: TObject; var Key: Char);
-    procedure FormCreate(Sender: TObject);
-    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -57,6 +55,7 @@ begin
         FrmSingleChat.Email := EdEmail.Text;
 
         //FrmChat.Show;
+        Global.SetEmailOnline;
         FrmChoice.Show;
         FrmLogin.Close;
       end;
@@ -71,14 +70,6 @@ begin
   begin
     MessageDlg('Campos vazios.', MtError, [MbOK], 0);
   end;
-
-  with Dm.TableUsuario do
-  begin //AQUI É ONDE O UPDATE ONLINE = 0 PARA ONLINE 1 OCORRE
-    SQL.Clear;
-    SQL.Add('UPDATE chatusuario SET Online = 1 WHERE EmailUsu =:pnom ');
-    ParamByName('pnom').AsString := Global.Email;
-    ExecSQL;
-  end;
 end;
 
 procedure TFrmLogin.EdApelidoKeyPress(Sender: TObject; var Key: Char);
@@ -87,16 +78,6 @@ begin
   begin
     BtEntrar.Click;
   end;
-end;
-
-procedure TFrmLogin.FormCreate(Sender: TObject);
-begin
-  Global := TGlobal.Create;
-end;
-
-procedure TFrmLogin.FormDestroy(Sender: TObject);
-begin
-  Global.Free;
 end;
 
 end.

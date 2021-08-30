@@ -3,7 +3,7 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Grids, Vcl.DBGrids, uDm, System.Notification, uCommom;
+  Vcl.Grids, Vcl.DBGrids, uDm, System.Notification, uCommom, FireDAC.Stan.Param;
 type
   TFrmSingleChat = class(TForm)
     Panel1: TPanel;
@@ -25,6 +25,7 @@ type
     procedure EdTextoKeyPress(Sender: TObject; var Key: Char);
     procedure BtnChatOkClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FApelido: String;
     FEmail: String;
@@ -70,7 +71,7 @@ begin
       TableMensagem.Post;
       TableMensagem.Close;
     end;
-    MChatConteudo.Lines.Add(FApelido + ': ' + EdTexto.Text);
+    updateChatIndividual;
     EdTexto.Text := '';
     EdTexto.SetFocus;
   end;
@@ -82,6 +83,12 @@ begin
     begin
       BtnChatOk.Click;
     end;
+end;
+
+procedure TFrmSingleChat.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  Global.SetEmailOffline;
+  FrmSingleChat.LastIdMensage := '0';
 end;
 
 procedure TFrmSingleChat.FormShow(Sender: TObject);
@@ -99,7 +106,7 @@ end;
 
 procedure TFrmSingleChat.Timer1Timer(Sender: TObject);
 begin
-  FrmSingleChat.UpdateMemo();
+  FrmSingleChat.updateChatIndividual();
 end;
 
 
@@ -121,11 +128,11 @@ begin
         begin
           FrmSingleChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
           FrmSingleChat.LastIdMensage := Fields[2].Text;
-          if Fields[0].Text <> Apelido then
+          if Fields[0].Text <> Global.Apelido then
           begin
             MyNotification.Name := 'Windows10Notification';
-            MyNotification.Title := 'Mensagem Chat ' + ApelidoRecipiente;
-            MyNotification.AlertBody := 'VIP SISTEMAS';
+            MyNotification.Title := '[VIP SISTEMAS - Privado] ' + ApelidoRecipiente;
+            MyNotification.AlertBody := Fields[1].Text;
             NotificationCenter1.PresentNotification(MyNotification);
           end;
           Next;
@@ -146,6 +153,7 @@ begin
   begin
     Params[0].Value := Global.EmailDestinatario;
     Params[1].Value := Global.Email;
+    Params[2].Value := 0;
     Open;
     try
       while not EoF do

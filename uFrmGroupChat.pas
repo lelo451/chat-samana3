@@ -84,14 +84,7 @@ end;
 
 procedure TFrmChat.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  with Dm.TableUsuario do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('UPDATE chatusuario SET Online = 0 WHERE EmailUsu =:pnom');
-    ParamByName('pnom').AsString := Email;
-    ExecSQL;
-  end;
+  Global.SetEmailOffline;
   Timer01.Enabled := False;
   FrmChat.LastIdMensage := '0';
 end;
@@ -132,8 +125,8 @@ begin
           if Fields[0].Text <> Global.Apelido then
           begin
             MyNotification.Name := 'Windows10Notification';
-            MyNotification.Title := 'Mensagem Chat Global';
-            MyNotification.AlertBody := 'VIP SISTEMAS';
+            MyNotification.Title := '[VIP SISTEMAS - Global] ' + Fields[0].Text;
+            MyNotification.AlertBody := Fields[1].Text;
             NotificationCenter1.PresentNotification(MyNotification);
           end;
           Next;

@@ -17,6 +17,8 @@ type
     procedure Panel1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormShow(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormDestroy(Sender: TObject);
   private
     { Private declarations }
   public
@@ -35,15 +37,18 @@ uses uDM;
 
 procedure TFrmPrincipal.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  with Dm.TableUsuario do
-  begin
-    Close;
-    SQL.Clear;
-    SQL.Add('UPDATE chatusuario SET Online = 0 WHERE EmailUsu =:pnom');
-    ParamByName('pnom').AsString := Global.Email;
-    ExecSQL;
-  end;
   Global.DesativarDataModule;
+  Global.SetEmailOffline;
+end;
+
+procedure TFrmPrincipal.FormCreate(Sender: TObject);
+begin
+  Global := TGlobal.Create;
+end;
+
+procedure TFrmPrincipal.FormDestroy(Sender: TObject);
+begin
+  Global.Free;
 end;
 
 procedure TFrmPrincipal.FormShow(Sender: TObject);

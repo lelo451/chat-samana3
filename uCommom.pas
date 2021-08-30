@@ -2,7 +2,7 @@ unit uCommom;
 
 interface
 
-uses uDm;
+uses uDm, Vcl.Dialogs;
 
 type
   TGlobal = class
@@ -13,6 +13,8 @@ type
 
   procedure AtivarDataModule;
   procedure DesativarDataModule;
+  procedure SetEmailOnline;
+  procedure SetEmailOffline;
 end;
 
 implementation
@@ -47,6 +49,24 @@ begin
       TableUsuario.Active := False;
       TableMensagem.Active := False;
     end;
+end;
+
+procedure TGlobal.SetEmailOffline;
+begin
+  with Dm.QuerySetOffline do
+  begin
+    Params[0].Value := Email;
+    Execute;
+  end;
+end;
+
+procedure TGlobal.SetEmailOnline;
+begin
+  with Dm.QuerySetOnline do
+  begin
+    Params[0].Value := Email;
+    Execute;
+  end;
 end;
 
 end.
