@@ -3,15 +3,14 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.StdCtrls,
-  Vcl.Grids, Vcl.DBGrids, uDm, System.Notification, uCommom, FireDAC.Stan.Param;
+  Vcl.Grids, Vcl.DBGrids, uDm, Vcl.Imaging.pngimage, Vcl.Buttons,System.Notification,
+  uUsuario;
 type
   TFrmSingleChat = class(TForm)
     Panel1: TPanel;
     Panel2: TPanel;
     Panel5: TPanel;
     MChatConteudo: TMemo;
-    BtnChatClear: TButton;
-    BtnChatOk: TButton;
     EdTexto: TEdit;
     LbApelido: TLabel;
     LbStatus: TLabel;
@@ -19,153 +18,87 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Timer1: TTimer;
-    NotificationCenter1: TNotificationCenter;
+    Pnl_Chat: TPanel;
+    Panel3: TPanel;
+    BtnEnviar: TSpeedButton;
     procedure FormShow(Sender: TObject);
     procedure BtnChatClearClick(Sender: TObject);
     procedure EdTextoKeyPress(Sender: TObject; var Key: Char);
-    procedure BtnChatOkClick(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
+    procedure BtnEnviarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     FApelido: String;
     FEmail: String;
     FEmailRecipiente: String;
     FApelidoRecipiente: String;
-    LastIdMensage : String;
+     LastIdMensage : String;
     { Private declarations }
   public
     { Public declarations }
-    Global : TGlobal;
-    property Apelido : String read FApelido write FApelido;
-    property Email : String read FEmail write FEmail;
-    property EmailRecipiente : String read FEmailRecipiente write FEmailRecipiente;
-    property ApelidoRecipiente : String read FApelidoRecipiente write FApelidoRecipiente;
     procedure UpdateMemo();
-    procedure updateChatIndividual();
   end;
 var
   FrmSingleChat: TFrmSingleChat;
 implementation
 {$R *.dfm}
+
+
 procedure TFrmSingleChat.BtnChatClearClick(Sender: TObject);
 begin
   EdTexto.Text := '';
 end;
 
-procedure TFrmSingleChat.BtnChatOkClick(Sender: TObject);
-var
-  Mensagem, From, Destinario: String;
+//Verifica se campo vazio e salva no banco a mensagem
+procedure TFrmSingleChat.BtnEnviarClick(Sender: TObject);
 begin
-  Mensagem := EdTexto.Text;
-  From := FEmail;
-  Destinario := FEmailRecipiente;
   if EdTexto.Text <> '' then
   begin
-    with Dm do
-    begin
-      TableMensagem.Open;
-      TableMensagem.Insert;
-      TableMensagemTEXTO.Value := Mensagem;
-      TableMensagemREMETENTE.Value := From;
-      TableMensagemDESTINATARIO.Value := Destinario;
-      TableMensagem.Post;
-      TableMensagem.Close;
-    end;
-    updateChatIndividual;
-    EdTexto.Text := '';
+    uUsuario.Usuario.Mensagens(EdTexto.Text);
+    uUsuario.Usuario.UpdateChat;
+    EdTexto.Clear;
     EdTexto.SetFocus;
+  end
+  else
+  begin
+    ShowMessage('Campo de mensagem vázio.');
   end;
 end;
 
+//Quando aperta enter
 procedure TFrmSingleChat.EdTextoKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #13 then
     begin
-      BtnChatOk.Click;
+      BtnEnviar.Click;
     end;
 end;
 
+//Fechar
 procedure TFrmSingleChat.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  Global.SetEmailOffline;
-  FrmSingleChat.LastIdMensage := '0';
+  uUsuario.Usuario.Destinatario := 'ALL';
+  MChatConteudo.Clear;
 end;
 
+//OnShow
 procedure TFrmSingleChat.FormShow(Sender: TObject);
 begin
-  if Apelido <> '' then
-    LbApelido.Caption := Apelido
-  else
-    LbApelido.Caption := 'Anônimo';
-  if ApelidoRecipiente <> '' then
-    LbApelidoRecipiente.Caption := ApelidoRecipiente
-  else
-    LbApelidoRecipiente.Caption := 'Anônimo';
+  uUsuario.Usuario.MensagensHistorico;
+  LbApelido.Caption := uUsuario.Usuario.Apelido;
+  LbApelidoRecipiente.Caption := uUsuario.Usuario.NomeDes;
   LbStatus.Caption := 'ONLINE';
 end;
 
+//Atualizar o Chat
 procedure TFrmSingleChat.Timer1Timer(Sender: TObject);
 begin
-  FrmSingleChat.updateChatIndividual();
-end;
-
-
-procedure TFrmSingleChat.updateChatIndividual();
-var
-  MyNotification : TNotification;
-begin
-  MyNotification := NotificationCenter1.CreateNotification;
-  with Dm.QueryIndividual do
-  begin
-    Params[0].Value := Global.EmailDestinatario;
-    Params[1].Value := Global.Email;
-    Params[2].Value := LastIdMensage;
-    Open;
-    if not IsEmpty then
-    begin
-      try
-        while not EoF do
-        begin
-          FrmSingleChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
-          FrmSingleChat.LastIdMensage := Fields[2].Text;
-          if Fields[0].Text <> Global.Apelido then
-          begin
-            MyNotification.Name := 'Windows10Notification';
-            MyNotification.Title := '[VIP SISTEMAS - Privado] ' + ApelidoRecipiente;
-            MyNotification.AlertBody := Fields[1].Text;
-            NotificationCenter1.PresentNotification(MyNotification);
-          end;
-          Next;
-        end;
-      finally
-        Close;
-        MyNotification.Free;
-      end;
-    end;
-    Close;
-  end;
+  FrmSingleChat.UpdateMemo();
 end;
 
 procedure TFrmSingleChat.UpdateMemo();
 begin
   FrmSingleChat.MChatConteudo.Clear;
-  with Dm.QueryIndividual do
-  begin
-    Params[0].Value := Global.EmailDestinatario;
-    Params[1].Value := Global.Email;
-    Params[2].Value := 0;
-    Open;
-    try
-      while not EoF do
-      begin
-        FrmSingleChat.MChatConteudo.Lines.Add(Fields[0].Text + ': ' + Fields[1].Text);
-        FrmSingleChat.LastIdMensage := Fields[2].Text;
-        Next;
-      end;
-    finally
-      Close;
-    end;
-    Close;
-  end;
+  uUsuario.Usuario.MensagensHistorico;
 end;
 end.

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2021/08/25 17:02:33.000.772,=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/08/25 17:03:38.000.597,C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\uFrmPrincipal.pas=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/08/25 17:03:38.000.597,C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\uFrmPrincipal.dfm=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
+    <Transaction>2021/08/25 17:03:47.000.584,C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\DelphiProject.dproj=C:\Users\Guilherme\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
+    <Transaction>2021/08/26 16:44:20.000.291,=C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\Unit1.pas</Transaction>
+    <Transaction>2021/08/26 16:48:17.000.879,C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\Unit1.dfm=C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\uFrmInfo.dfm</Transaction>
+    <Transaction>2021/08/26 16:48:17.000.879,C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\Unit1.pas=C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\uFrmInfo.pas</Transaction>
+    <Transaction>2021/08/26 17:28:38.000.300,=C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\Unit1.pas</Transaction>
+    <Transaction>2021/08/26 17:29:16.000.642,C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\Unit1.pas=C:\Users\Guilherme\Desktop\guilherme-ads\DELPHI-TREINAMENTO\uDadosObrigatorios.pas</Transaction>
+    <Transaction>2021/08/27 09:52:18.000.898,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\Unit1.pas</Transaction>
+    <Transaction>2021/08/27 09:53:37.000.605,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uDm.pas</Transaction>
+    <Transaction>2021/08/27 09:58:28.000.148,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\Unit1.pas</Transaction>
+    <Transaction>2021/08/27 10:12:05.000.831,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uFrmCadastrar.pas</Transaction>
+    <Transaction>2021/08/27 10:12:20.000.479,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uFrmLogin.pas</Transaction>
+    <Transaction>2021/08/27 10:12:31.000.970,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uFrmChoice.pas</Transaction>
+    <Transaction>2021/08/27 10:12:41.000.069,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uFrmGroupChat.pas</Transaction>
+    <Transaction>2021/08/27 10:12:45.000.938,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uFrmSingleChat.pas</Transaction>
+    <Transaction>2021/08/27 10:30:18.000.171,C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uFrmLogin.pas=</Transaction>
+    <Transaction>2021/08/27 14:40:06.000.690,=C:\Users\Guilherme\Desktop\guilherme-ads\SISTEMA-COMPLETO\uCommom.pas</Transaction>
+    <Transaction>2021/08/30 11:33:15.000.908,=C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uFrmLogin.pas</Transaction>
+    <Transaction>2021/08/30 11:33:15.000.968,=C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uUsuario.pas</Transaction>
+    <Transaction>2021/08/30 11:53:55.000.839,C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uFrmLogin.pas=</Transaction>
+    <Transaction>2021/08/30 12:28:29.000.445,C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uFrmGroupChat.pas=C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uFrmChat.pas</Transaction>
+    <Transaction>2021/08/30 12:28:29.000.445,C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uFrmGroupChat.dfm=C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uFrmChat.dfm</Transaction>
+    <Transaction>2021/08/30 12:37:56.000.174,C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uFrmChoice.pas=</Transaction>
+    <Transaction>2021/08/30 12:38:04.000.352,C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uDadosObrigatorios.pas=</Transaction>
+    <Transaction>2021/08/30 12:38:22.000.540,C:\Users\Tomás\Documents\Embarcadero\Studio\Projects\SISTEMA-COMPLETO\uCommom.pas=</Transaction>
+  </Transactions>
+	<ProjectSortOrder AutoSort="0" SortType="0">
+    <File Path="uDm.pas"/>
+    <File Path="uDm.dfm"/>
+    <File Path="uFrmCadastrar.pas"/>
+    <File Path="uFrmCadastrar.dfm"/>
+    <File Path="uFrmInfo.pas"/>
+    <File Path="uFrmInfo.dfm"/>
+    <File Path="uFrmPrincipal.pas"/>
+    <File Path="uFrmPrincipal.dfm"/>
+    <File Path="uFrmSingleChat.pas"/>
+    <File Path="uFrmSingleChat.dfm"/>
+    <File Path="uUsuario.pas"/>
+    <File Path="uFrmChat.pas"/>
+    <File Path="uFrmChat.dfm"/>
+  </ProjectSortOrder>
+</BorlandProject>

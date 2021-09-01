@@ -1,0 +1,195 @@
+object FrmSingleChat: TFrmSingleChat
+  Left = 0
+  Top = 0
+  BorderIcons = [biSystemMenu]
+  Caption = 'Single Chat'
+  ClientHeight = 416
+  ClientWidth = 625
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 625
+    Height = 80
+    Align = alTop
+    Caption = 'CHAT'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -21
+    Font.Name = 'Tahoma'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+    object LbApelido: TLabel
+      Left = 67
+      Top = 30
+      Width = 65
+      Height = 19
+      Caption = 'An'#244'nimo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object LbStatus: TLabel
+      Left = 503
+      Top = 32
+      Width = 60
+      Height = 19
+      Caption = 'STATUS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = [fsItalic]
+      ParentFont = False
+    end
+    object LbApelidoRecipiente: TLabel
+      Left = 67
+      Top = 55
+      Width = 65
+      Height = 19
+      Caption = 'An'#244'nimo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label2: TLabel
+      Left = 14
+      Top = 32
+      Width = 26
+      Height = 19
+      Caption = 'DE:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label3: TLabel
+      Left = 14
+      Top = 55
+      Width = 47
+      Height = 19
+      Caption = 'PARA:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 368
+    Width = 625
+    Height = 48
+    Align = alBottom
+    BevelOuter = bvNone
+    Color = clWindow
+    ParentBackground = False
+    TabOrder = 1
+    object Pnl_Chat: TPanel
+      Left = 0
+      Top = 0
+      Width = 451
+      Height = 41
+      BevelOuter = bvNone
+      TabOrder = 1
+    end
+    object EdTexto: TEdit
+      Left = 4
+      Top = 10
+      Width = 427
+      Height = 29
+      BevelInner = bvNone
+      BevelOuter = bvNone
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      TextHint = 'Digite sua mensagem aqui...'
+      OnKeyPress = EdTextoKeyPress
+    end
+    object Panel3: TPanel
+      Left = 489
+      Top = 10
+      Width = 91
+      Height = 29
+      BevelOuter = bvNone
+      Color = clMenuHighlight
+      ParentBackground = False
+      TabOrder = 2
+      object BtnEnviar: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 91
+        Height = 29
+        Align = alClient
+        Caption = 'Enviar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindow
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = BtnEnviarClick
+        ExplicitLeft = 1
+        ExplicitTop = 9
+        ExplicitWidth = 89
+        ExplicitHeight = 27
+      end
+    end
+  end
+  object Panel5: TPanel
+    Left = 0
+    Top = 80
+    Width = 625
+    Height = 288
+    Align = alClient
+    TabOrder = 2
+    object MChatConteudo: TMemo
+      Left = 1
+      Top = 1
+      Width = 623
+      Height = 286
+      Align = alClient
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -19
+      Font.Name = 'Tahoma'
+      Font.Style = [fsBold]
+      ParentFont = False
+      ReadOnly = True
+      TabOrder = 0
+    end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 2000
+    OnTimer = Timer1Timer
+    Left = 424
+    Top = 16
+  end
+end

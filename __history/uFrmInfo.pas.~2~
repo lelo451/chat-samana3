@@ -1,0 +1,83 @@
+unit uFrmInfo;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons,
+  Vcl.Imaging.pngimage, Vcl.StdCtrls,
+  uDm, uFrmChat;
+
+type
+  TFrm_Agenda = class(TForm)
+    Pnl_Acesso: TPanel;
+    SpeedButton1: TSpeedButton;
+    Pnl_Clientes: TPanel;
+    Pnl_Estoque: TPanel;
+    Pnl_Relatorios: TPanel;
+    Pnl_Suporte: TPanel;
+    Pnl_Cadastro: TPanel;
+    Pnl_Options: TPanel;
+    Image1: TImage;
+    BtnSuporte: TSpeedButton;
+    Label1: TLabel;
+    ImgCadastro: TImage;
+    ImgCliente: TImage;
+    BtnClientes: TSpeedButton;
+    BtnCadastro: TSpeedButton;
+    Image2: TImage;
+    BtnEstoque: TSpeedButton;
+    Image3: TImage;
+    BtnRelatorios: TSpeedButton;
+    Image4: TImage;
+    BtnOptions: TSpeedButton;
+    Shape1: TShape;
+    Shape2: TShape;
+    Shape3: TShape;
+    Shape4: TShape;
+    Shape5: TShape;
+    Shape6: TShape;
+    Lbl_Cadastro: TLabel;
+    Lbl_Clientes: TLabel;
+    Lbl_Estoque: TLabel;
+    Lbl_Relatorio: TLabel;
+    Lbl_Suporte: TLabel;
+    Label7: TLabel;
+    Lbl_Options: TLabel;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure BtnSuporteClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Frm_Agenda: TFrm_Agenda;
+
+implementation
+
+{$R *.dfm}
+
+// Centralização do form ao meio da tela
+procedure TFrm_Agenda.BtnSuporteClick(Sender: TObject);
+begin
+  FrmChat := TFrmChat.Create (nil);
+  FrmChat.ShowModal;
+end;
+
+procedure TFrm_Agenda.FormResize(Sender: TObject);
+begin
+  Pnl_Acesso.Top  := Round ( Frm_Agenda.Height / 2 - Pnl_Acesso.Height / 2 );
+  Pnl_Acesso.Left := Round ( Frm_Agenda.Width / 2 - Pnl_Acesso.Width / 2 )
+end;
+
+// Função close do speedbuttom (X)
+procedure TFrm_Agenda.SpeedButton1Click(Sender: TObject);
+begin
+  Close;
+  Destroy;
+end;
+
+end.

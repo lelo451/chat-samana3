@@ -1,7 +1,5 @@
 unit uDm;
-
 interface
-
 uses
   System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
@@ -9,39 +7,24 @@ uses
   FireDAC.Phys.FBDef, FireDAC.VCLUI.Wait, Data.DB, FireDAC.Comp.Client,
   FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf, FireDAC.DApt,
   FireDAC.Comp.DataSet, FireDAC.Phys.IBBase;
-
 type
   TDm = class(TDataModule)
     FDConnection: TFDConnection;
     QueryUsuario: TFDQuery;
-    TableUsuario: TFDTable;
-    QueryUsuOnline: TFDQuery;
     FDPhysFBDriverLink: TFDPhysFBDriverLink;
-    Query: TFDQuery;
-    TableMensagem: TFDTable;
-    TableMensagemTEXTO: TStringField;
-    TableMensagemREMETENTE: TStringField;
-    TableMensagemDESTINATARIO: TStringField;
-    QueryIndividual: TFDQuery;
-    QueryIndividualHasMensagem: TFDQuery;
-    QuerySetOnline: TFDQuery;
-    QuerySetOffline: TFDQuery;
-    TableUsuarioEMAILUSU: TStringField;
-    TableUsuarioNOMEUSU: TStringField;
-    TableUsuarioONLINE: TIntegerField;
+    QueryTimeGlobal: TFDQuery;
+    QueryTimePrivado: TFDQuery;
+    QueryRemetentePrivado: TFDQuery;
+    QueryRemetenteCount: TFDQuery;
+    QueryRemetentePrivadoCount: TFDQuery;
   private
     { Private declarations }
   public
     { Public declarations }
   end;
-
 var
   Dm: TDm;
-
 implementation
-
 {%CLASSGROUP 'Vcl.Controls.TControl'}
-
 {$R *.dfm}
-
 end.

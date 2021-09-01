@@ -1,0 +1,20 @@
+program DelphiProject;
+
+uses
+  Vcl.Forms,
+  uDm in 'uDm.pas' {Dm: TDataModule},
+  uFrmCadastrar in 'uFrmCadastrar.pas' {FrmCadastrar},
+  uFrmChat in 'uFrmChat.pas' {FrmChat},
+  uFrmInfo in 'uFrmInfo.pas' {Frm_Agenda},
+  uFrmPrincipal in 'uFrmPrincipal.pas' {FrmLogin},
+  uFrmSingleChat in 'uFrmSingleChat.pas' {FrmSingleChat},
+  uUsuario in 'uUsuario.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.Run;
+end.

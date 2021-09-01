@@ -7,192 +7,147 @@ object Dm: TDm
       'Database= /opt/firebird/data/ARQUIVO.FDB'
       'User_Name=SYSDBA'
       'Password=lAJdzUzulns9BJrN0nz4'
-      'Server=env-5157229.jelastic.saveincloud.net'
+      'Server=env-0276048.jelastic.saveincloud.net'
       'Port=12690'
       'Protocol=TCPIP'
       'DriverID=FB')
     Connected = True
     LoginPrompt = False
     Left = 40
-    Top = 40
+    Top = 24
   end
   object QueryUsuario: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
       'SELECT * FROM chatusuario;')
-    Left = 32
-    Top = 128
-  end
-  object TableUsuario: TFDTable
-    IndexFieldNames = 'EMAILUSU'
-    Connection = FDConnection
-    UpdateOptions.UpdateTableName = 'CHATUSUARIO'
-    TableName = 'CHATUSUARIO'
-    Left = 32
-    Top = 192
-    object TableUsuarioEMAILUSU: TStringField
-      FieldName = 'EMAILUSU'
-      Origin = 'EMAILUSU'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-      Size = 100
-    end
-    object TableUsuarioNOMEUSU: TStringField
-      FieldName = 'NOMEUSU'
-      Origin = 'NOMEUSU'
-      Required = True
-    end
-    object TableUsuarioONLINE: TIntegerField
-      FieldName = 'ONLINE'
-      Origin = 'ONLINE'
-    end
-  end
-  object QueryUsuOnline: TFDQuery
-    Connection = FDConnection
-    SQL.Strings = (
-      'SELECT NomeUsu, EmailUsu FROM chatusuario WHERE Online = 1')
-    Left = 112
-    Top = 128
+    Left = 216
+    Top = 24
   end
   object FDPhysFBDriverLink: TFDPhysFBDriverLink
     VendorLib = 'C:\Program Files\Firebird\Firebird_2_5\WOW64\fbclient.dll'
-    Left = 344
-    Top = 64
+    Left = 128
+    Top = 24
   end
-  object Query: TFDQuery
+  object QueryTimeGlobal: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.IDMENSAGEM as id'
-      'FROM CHATUSUARIO C, MENSAGEM M'
-      'WHERE'
-      'M.REMETENTE = C.EMAILUSU'
-      'AND'
-      'M.DESTINATARIO = '#39'ALL'#39
-      'AND'
-      'M.IDMENSAGEM > :idmsg'
-      'ORDER BY M.IDMENSAGEM')
-    Left = 312
-    Top = 160
+      'select count(*) from mensagem m'
+      'where'
+      'm.destinatario = '#39'ALL'#39
+      'and'
+      'm.dataenvio > :horaglobal')
+    Left = 296
+    Top = 24
     ParamData = <
       item
-        Name = 'IDMSG'
-        DataType = ftString
+        Name = 'HORAGLOBAL'
+        DataType = ftDateTime
         ParamType = ptInput
-        Value = '0'
+        Value = 44439.8405092593d
       end>
   end
-  object TableMensagem: TFDTable
-    IndexFieldNames = 'IDMENSAGEM'
-    Connection = FDConnection
-    TableName = 'MENSAGEM'
-    Left = 104
-    Top = 192
-    object TableMensagemTEXTO: TStringField
-      FieldName = 'TEXTO'
-      Origin = 'TEXTO'
-      Required = True
-      Size = 500
-    end
-    object TableMensagemREMETENTE: TStringField
-      FieldName = 'REMETENTE'
-      Origin = 'REMETENTE'
-      Size = 100
-    end
-    object TableMensagemDESTINATARIO: TStringField
-      FieldName = 'DESTINATARIO'
-      Origin = 'DESTINATARIO'
-      Size = 100
-    end
-  end
-  object QueryIndividual: TFDQuery
+  object QueryTimePrivado: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.IDMENSAGEM as id'
-      'FROM CHATUSUARIO C, MENSAGEM M'
-      'WHERE'
-      'M.REMETENTE = C.EMAILUSU'
-      'AND'
-      'M.DESTINATARIO in (:dest, :rem)'
-      'AND'
-      'M.REMETENTE in (:dest, :rem)'
-      'AND'
-      'M.IDMENSAGEM > :idmsg'
-      'ORDER BY M.IDMENSAGEM')
-    Left = 376
-    Top = 160
+      'select count(*) from mensagem m'
+      'where'
+      'm.destinatario = :dest'
+      'and'
+      'm.dataenvio > :horaglobal')
+    Left = 384
+    Top = 24
     ParamData = <
       item
         Name = 'DEST'
         DataType = ftString
         ParamType = ptInput
-        Value = 'gustavo'
+        Value = 'leonardo.c.a.p2@gmail.com'
+      end
+      item
+        Name = 'HORAGLOBAL'
+        DataType = ftDateTime
+        ParamType = ptInput
+        Value = 44439.5071759259d
+      end>
+  end
+  object QueryRemetentePrivado: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select distinct m.remetente from mensagem m'
+      'where'
+      'm.destinatario = :dest'
+      'and'
+      'm.dataenvio > :horaglobal')
+    Left = 384
+    Top = 96
+    ParamData = <
+      item
+        Name = 'DEST'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'leonardo.c.a.p2@gmail.com'
+      end
+      item
+        Name = 'HORAGLOBAL'
+        DataType = ftDateTime
+        ParamType = ptInput
+        Value = 44439.5071759259d
+      end>
+  end
+  object QueryRemetenteCount: TFDQuery
+    Connection = FDConnection
+    SQL.Strings = (
+      'select count(*) from mensagem m'
+      'where'
+      'm.destinatario = :dest'
+      'and'
+      'm.remetente = :rem'
+      'and'
+      'm.dataenvio > :horaglobal')
+    Left = 392
+    Top = 192
+    ParamData = <
+      item
+        Name = 'DEST'
+        DataType = ftString
+        ParamType = ptInput
+        Value = 'leonardo.c.a.p2@gmail.com'
       end
       item
         Name = 'REM'
         DataType = ftString
         ParamType = ptInput
         Size = 100
-        Value = 'leonardo.c.a.p2@gmail.com'
       end
       item
-        Name = 'IDMSG'
-        DataType = ftString
+        Name = 'HORAGLOBAL'
+        DataType = ftDateTime
         ParamType = ptInput
-        Value = '0'
+        Value = 44439.5071759259d
       end>
   end
-  object QueryIndividualHasMensagem: TFDQuery
+  object QueryRemetentePrivadoCount: TFDQuery
     Connection = FDConnection
     SQL.Strings = (
-      'select distinct(apelido) from'
-      
-        '(SELECT C.NOMEUSU as apelido, M.TEXTO as msg, M.DESTINATARIO as ' +
-        'dest, M.REMETENTE as rem, M.IDMENSAGEM as idmsg'
-      'FROM CHATUSUARIO C, MENSAGEM M'
-      'WHERE'
-      'M.REMETENTE = C.EMAILUSU'
-      'AND'
-      'M.DESTINATARIO in (:dest)'
-      'ORDER BY M.IDMENSAGEM)')
-    Left = 376
-    Top = 216
+      'select count(distinct m.remetente) from mensagem m'
+      'where'
+      'm.destinatario = :dest'
+      'and'
+      'm.dataenvio > :horaglobal')
+    Left = 224
+    Top = 96
     ParamData = <
       item
         Name = 'DEST'
         DataType = ftString
         ParamType = ptInput
-        Value = 'weslley@hotmail.com'
-      end>
-  end
-  object QuerySetOnline: TFDQuery
-    Connection = FDConnection
-    SQL.Strings = (
-      'UPDATE chatusuario SET Online = 1'
-      'WHERE EmailUsu = :mail')
-    Left = 144
-    Top = 256
-    ParamData = <
+        Value = 'leonardo.c.a.p2@gmail.com'
+      end
       item
-        Name = 'MAIL'
-        DataType = ftString
+        Name = 'HORAGLOBAL'
+        DataType = ftDateTime
         ParamType = ptInput
-        Value = 'teste'
-      end>
-  end
-  object QuerySetOffline: TFDQuery
-    Connection = FDConnection
-    SQL.Strings = (
-      'UPDATE chatusuario SET Online = 0'
-      'WHERE EmailUsu = :mail')
-    Left = 224
-    Top = 256
-    ParamData = <
-      item
-        Name = 'MAIL'
-        DataType = ftString
-        ParamType = ptInput
-        Size = 100
-        Value = Null
+        Value = 44439.5071759259d
       end>
   end
 end

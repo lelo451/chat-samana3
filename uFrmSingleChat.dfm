@@ -4,7 +4,7 @@ object FrmSingleChat: TFrmSingleChat
   BorderIcons = [biSystemMenu]
   Caption = 'Single Chat'
   ClientHeight = 416
-  ClientWidth = 587
+  ClientWidth = 625
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,7 +19,7 @@ object FrmSingleChat: TFrmSingleChat
   object Panel1: TPanel
     Left = 0
     Top = 0
-    Width = 587
+    Width = 625
     Height = 80
     Align = alTop
     Caption = 'CHAT'
@@ -98,57 +98,82 @@ object FrmSingleChat: TFrmSingleChat
   end
   object Panel2: TPanel
     Left = 0
-    Top = 376
-    Width = 587
-    Height = 40
+    Top = 368
+    Width = 625
+    Height = 48
     Align = alBottom
+    BevelOuter = bvNone
+    Color = clWindow
+    ParentBackground = False
     TabOrder = 1
-    object BtnChatClear: TButton
-      Left = 521
-      Top = 5
-      Width = 58
-      Height = 31
-      Caption = 'LIMPAR'
-      TabOrder = 0
-      OnClick = BtnChatClearClick
-    end
-    object BtnChatOk: TButton
-      Left = 457
-      Top = 5
-      Width = 58
-      Height = 31
-      Caption = 'ENVIAR'
+    object Pnl_Chat: TPanel
+      Left = 0
+      Top = 0
+      Width = 451
+      Height = 41
+      BevelOuter = bvNone
       TabOrder = 1
-      OnClick = BtnChatOkClick
     end
     object EdTexto: TEdit
-      Left = 24
-      Top = 5
+      Left = 4
+      Top = 10
       Width = 427
-      Height = 31
+      Height = 29
+      BevelInner = bvNone
+      BevelOuter = bvNone
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -19
-      Font.Name = 'Tahoma'
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
       Font.Style = []
       ParentFont = False
-      TabOrder = 2
-      TextHint = 'digite aqui...'
+      TabOrder = 0
+      TextHint = 'Digite sua mensagem aqui...'
       OnKeyPress = EdTextoKeyPress
+    end
+    object Panel3: TPanel
+      Left = 489
+      Top = 10
+      Width = 91
+      Height = 29
+      BevelOuter = bvNone
+      Color = clMenuHighlight
+      ParentBackground = False
+      TabOrder = 2
+      object BtnEnviar: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 91
+        Height = 29
+        Align = alClient
+        Caption = 'Enviar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindow
+        Font.Height = -16
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        OnClick = BtnEnviarClick
+        ExplicitLeft = 1
+        ExplicitTop = 9
+        ExplicitWidth = 89
+        ExplicitHeight = 27
+      end
     end
   end
   object Panel5: TPanel
     Left = 0
     Top = 80
-    Width = 587
-    Height = 296
+    Width = 625
+    Height = 288
     Align = alClient
     TabOrder = 2
     object MChatConteudo: TMemo
       Left = 1
       Top = 1
-      Width = 585
-      Height = 294
+      Width = 623
+      Height = 286
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -166,10 +191,6 @@ object FrmSingleChat: TFrmSingleChat
     Interval = 2000
     OnTimer = Timer1Timer
     Left = 424
-    Top = 16
-  end
-  object NotificationCenter1: TNotificationCenter
-    Left = 360
     Top = 16
   end
 end
