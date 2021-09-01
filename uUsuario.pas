@@ -170,13 +170,13 @@ begin
     FDataHora     := Query.FieldByName('DATAENVIO').AsDateTime;
     if Global = true then
     begin
-      uFrmChat.FrmChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
+      FrmChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
       HoraGlobal := Query.FieldByName('DATAENVIO').AsDateTime;
     end
     else
     begin
       HoraPrivado := Query.FieldByName('DATAENVIO').AsDateTime;
-      uFrmSingleChat.FrmSingleChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
+      FrmSingleChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
     end;
     Query.Next;
   end;
@@ -212,7 +212,7 @@ begin
     if not IsEmpty then
     begin
       HasMensagem := True;
-      inc(novamensagem, StrToInt(Fields[0].Text));
+      novamensagem := novamensagem + StrToInt(Fields[0].Text);
     end;
     Close;
   end;
@@ -240,7 +240,7 @@ begin
       while not Eof do
       begin
         Remetentes[i] := Fields[0].Text;
-        inc(i);
+        i := i + i;
         Next;
       end;
     end;
@@ -267,7 +267,7 @@ begin
       Open;
       if not IsEmpty then
       begin
-        RecebeuMensagem := Fields[0].Text + ' nova(s) mensagem(ns) de ' + Apelidos[I] + #13#10;
+        RecebeuMensagem := RecebeuMensagem + Fields[0].Text + ' nova(s) mensagem(ns) de ' + Apelidos[I] + #13#10;
       end;
       Close;
     end;
@@ -296,12 +296,12 @@ begin
       if (FDataHora > HoraGlobal) and (Global = True) then
       begin
         HoraGlobal := FDataHora;
-        uFrmChat.FrmChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
+        FrmChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
       end
       else if (DataHora > HoraPrivado) and (Global = False) then
       begin
         HoraPrivado := FDataHora;
-        uFrmSingleChat.FrmSingleChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
+        FrmSingleChat.MChatConteudo.Lines.Add(DateTimeToStr(FDataHora) + ' ' + Nome + ': ' +  FTexto);
       end;
       Query.Next;
     end;

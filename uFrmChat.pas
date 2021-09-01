@@ -159,12 +159,13 @@ end;
 procedure TFrmChat.Timer01Timer(Sender: TObject);
 begin
   uUsuario.Usuario.UpdateChat;
-  DSUsuario.DataSet.Refresh;
+  DSUsuario.DataSet.Refresh
 end;
 
 //Atualiza o chat de conversa
 procedure TFrmChat.UpdateMemo();
 begin
+
   FrmChat.MChatConteudo.Clear;
   uUsuario.Usuario.MensagensHistorico;
 end;

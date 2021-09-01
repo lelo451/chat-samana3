@@ -1,0 +1,109 @@
+unit uFrmSingleChat;
+interface
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.ExtCtrls, Vcl.StdCtrls,
+  Vcl.Grids, Vcl.DBGrids, uDm, Vcl.Imaging.pngimage, Vcl.Buttons,System.Notification,
+  uUsuario;
+type
+  TFrmSingleChat = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    Panel5: TPanel;
+    MChatConteudo: TMemo;
+    EdTexto: TEdit;
+    LbApelido: TLabel;
+    LbStatus: TLabel;
+    LbApelidoRecipiente: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Timer1: TTimer;
+    Pnl_Chat: TPanel;
+    Panel3: TPanel;
+    BtnEnviar: TSpeedButton;
+    procedure FormShow(Sender: TObject);
+    procedure BtnChatClearClick(Sender: TObject);
+    procedure EdTextoKeyPress(Sender: TObject; var Key: Char);
+    procedure Timer1Timer(Sender: TObject);
+    procedure BtnEnviarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+  private
+    FApelido: String;
+    FEmail: String;
+    FEmailRecipiente: String;
+    FApelidoRecipiente: String;
+     LastIdMensage : String;
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure UpdateMemo();
+  end;
+var
+  FrmSingleChat: TFrmSingleChat;
+implementation
+{$R *.dfm}
+
+
+procedure TFrmSingleChat.BtnChatClearClick(Sender: TObject);
+begin
+  EdTexto.Text := '';
+end;
+
+//Verifica se campo vazio e salva no banco a mensagem
+procedure TFrmSingleChat.BtnEnviarClick(Sender: TObject);
+begin
+  if EdTexto.Text <> '' then
+  begin
+    uUsuario.Usuario.Mensagens(EdTexto.Text);
+    uUsuario.Usuario.UpdateChat;
+    EdTexto.Clear;
+    EdTexto.SetFocus;
+  end
+  else
+  begin
+    ShowMessage('Campo de mensagem vázio.');
+  end;
+end;
+
+//Quando aperta enter
+procedure TFrmSingleChat.EdTextoKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #13 then
+    begin
+      BtnEnviar.Click;
+    end;
+end;
+
+//Fechar
+procedure TFrmSingleChat.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  uUsuario.Usuario.Destinatario := 'ALL';
+  MChatConteudo.Clear;
+end;
+
+//OnShow
+procedure TFrmSingleChat.FormShow(Sender: TObject);
+begin
+  uUsuario.Usuario.MensagensHistorico;
+  LbApelido.Caption := uUsuario.Usuario.Apelido;
+  LbApelidoRecipiente.Caption := uUsuario.Usuario.NomeDes;
+  LbStatus.Caption := 'ONLINE';
+end;
+
+//Atualizar o Chat
+procedure TFrmSingleChat.Timer1Timer(Sender: TObject);
+begin
+  Tthread.CreateAnonymousThread(
+    procedure
+    begin
+      FrmSingleChat.UpdateMemo();
+    end
+  ).Start;
+end;
+
+procedure TFrmSingleChat.UpdateMemo();
+begin
+  FrmSingleChat.MChatConteudo.Clear;
+  uUsuario.Usuario.MensagensHistorico;
+end;
+end.
